@@ -1,0 +1,10 @@
+{
+  "appId": "com.iskender.sinavtakip",
+  "appName": "Sınav Takip",
+  "webDir": "www",
+  "android": { "backgroundColor": "#f5f3fa" },
+  "server": { "androidScheme": "https" },
+  "plugins": {
+    "LocalNotifications": { "smallIcon": "ic_stat_icon", "iconColor": "#5B4BC4" }
+  }
+}

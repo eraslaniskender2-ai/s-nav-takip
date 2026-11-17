@@ -1,0 +1,23 @@
+SINAV TAKIP - APK URETME (GitHub, ucretsiz)
+
+1) github.com'da ucretsiz hesap ac.
+2) Sag ustte + > New repository. Ad: sinav-takip. "Private" (ozel) sec. Create repository.
+3) "uploading an existing file" baglantisina bas.
+4) Bu klasorun ICINDEKILERI (package.json, capacitor.config.json, www, assets,
+   scripts, android-signing, .github ...) tarayiciya surukle birak. Klasorun kendisini degil.
+   .github gorunmuyorsa asagidaki NOT'a bak.
+5) Asagida "Commit changes" de.
+6) Ustte Actions sekmesi > "APK olustur" calisir (5-10 dk). Yesil tik olunca
+   calismaya tikla > en altta Artifacts > Sinav-Takip-APK indir.
+7) Inen zip'in icindeki Sinav-Takip.apk'yi telefona gonder ve kur.
+
+ONEMLI
+- Depoyu Private tut. android-signing icindeki anahtar uygulamanin imzasidir.
+- Bu anahtari yedekle. Uygulama guncellemeleri hep ayni anahtarla uretilmeli.
+- Eski (PWABuilder) uygulamadan gecmeden once Profil > Tam yedek al.
+  Yeni uygulamada Profil > Yedekten yukle.
+
+NOT (.github gorunmuyorsa)
+Depoda Add file > Create new file. Ad kutusuna: .github/workflows/build-apk.yml
+yaz. Icerik olarak bu klasordeki .github/workflows/build-apk.yml dosyasinin
+metnini yapistir, Commit.
