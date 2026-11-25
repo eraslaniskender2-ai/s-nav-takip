@@ -9,7 +9,7 @@
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <style>
-:root{--bg:#111716;--sf:#19211f;--sf2:#222c2a;--tx:#e4ebe8;--mu:#9db0aa;--ac:#6fcdb2;--acb:#0a1f1a;--wa:#e3b873;--er:#ee9a9a;--bd:#2a3532;--sh:rgba(0,0,0,.38);--sh2:rgba(0,0,0,.18);color-scheme:dark}
+:root{--bg:#f5f3fa;--sf:#ffffff;--sf2:#ebe7f5;--tx:#25203a;--mu:#5f5a78;--ac:#5b4bc4;--acb:#ffffff;--wa:#9a620f;--er:#b3414f;--bd:#ddd8ec;--sh:rgba(40,30,80,.14);--sh2:rgba(40,30,80,.07);color-scheme:light}
 :root[data-t=light]{--bg:#f2f6f4;--sf:#ffffff;--sf2:#e6eeea;--tx:#1d2925;--mu:#566861;--ac:#23806b;--acb:#ffffff;--wa:#9a620f;--er:#b8454f;--bd:#d8e2de;--sh:rgba(20,40,34,.14);--sh2:rgba(20,40,34,.07);color-scheme:light}
 *{box-sizing:border-box;margin:0}
 html,body{background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.5}
@@ -110,12 +110,51 @@ label{font-size:14px;margin:18px 0 8px}
 .dots3{display:inline-flex;gap:4px;padding:6px 2px}.dots3 i{width:7px;height:7px;border-radius:50%;background:var(--mu);animation:bl 1s infinite}
 .dots3 i:nth-child(2){animation-delay:.15s}.dots3 i:nth-child(3){animation-delay:.3s}
 @keyframes bl{0%,60%,100%{opacity:.3}30%{opacity:1}}
+#splash{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;transition:opacity .45s}
+#splash.out{opacity:0;pointer-events:none}
+#splash .lg{width:100px;height:100px;border-radius:30px;background:linear-gradient(145deg,var(--sf2),var(--sf));border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 40px var(--sh);margin-bottom:30px;animation:pop .8s ease both}
+@keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+#splash h1{font-size:31px;letter-spacing:.5px;margin:0;color:var(--tx)}
+#splash .sub{color:var(--mu);letter-spacing:4px;font-size:12px;text-transform:uppercase;margin-top:8px}
+#splash .bar{width:min(260px,70vw);height:6px;border-radius:6px;background:var(--sf2);overflow:hidden;margin-top:52px}
+#splash .bar i{display:block;height:100%;width:0;background:var(--ac);border-radius:6px;animation:fill 3s cubic-bezier(.45,.05,.3,1) forwards}
+@keyframes fill{to{width:100%}}
+#splash .st{height:24px;margin-top:20px;color:var(--mu);font-size:15px}
+#splash .st::after{content:'';display:inline-block;width:2px;height:15px;background:var(--ac);margin-left:2px;vertical-align:-2px;animation:cur 1s steps(1) infinite}
+@keyframes cur{50%{opacity:0}}
+.pvt{border-collapse:separate;border-spacing:2px;width:100%;table-layout:fixed;min-width:300px}
+.pvt td{height:20px;font-size:9px;text-align:center;border-radius:5px;padding:0;overflow:hidden;color:var(--tx)}
+.pvt th{font-size:9px;color:var(--mu);font-weight:600}
+.big{font-size:54px;font-weight:700;letter-spacing:1px;text-align:center;font-variant-numeric:tabular-nums;margin:14px 0 4px}
+.nav button{font-size:11px}
+.acc{background:var(--sf);border:1px solid var(--bd);border-radius:22px;margin:12px 0;overflow:hidden}
+.acc summary{list-style:none;display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary b{display:block}.acc summary .mu{display:block}
+.acc summary .chev{margin-left:auto;transition:transform .2s;color:var(--mu);display:flex}
+.acc[open]>summary .chev{transform:rotate(180deg)}
+.accb{padding:0 18px 18px}
+#pdfv{position:fixed;inset:0;z-index:60;background:var(--bg);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top)}
+.pvbar{display:flex;align-items:center;gap:8px;padding:8px 12px}.pvt2{min-width:0;flex:1}.pvt2 b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pvseg{margin:0 12px 8px}
+#pdfc{flex:1;overflow:auto;background:var(--sf2);-webkit-overflow-scrolling:touch}
+#pdfi{display:flex;flex-direction:column;align-items:center;min-width:100%;width:max-content;padding:10px 0}
+.pgw{background:#fff;margin:6px 10px;box-shadow:0 2px 10px rgba(0,0,0,.2);flex:none}.pgw canvas{display:block}
+.ov{z-index:70}.tg{z-index:80}
+#pdfs{position:absolute;left:0;right:0;bottom:0;height:56%;background:var(--sf);border-radius:20px 20px 0 0;box-shadow:0 -8px 30px rgba(0,0,0,.25);overflow:auto;padding:0 14px 20px;z-index:2}
+.shh{position:sticky;top:0;background:var(--sf);display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 0 8px;z-index:1}
+.qrow{display:flex;align-items:center;gap:8px;padding:4px 0}.qn{width:30px;text-align:right;color:var(--mu);font-variant-numeric:tabular-nums}
+.bub{flex:1;max-width:54px;height:40px;border-radius:12px;border:1px solid var(--bd);background:var(--sf2);color:var(--tx);font:inherit;font-weight:600;cursor:pointer}
+.bub.on{background:var(--ac);color:var(--acb);border-color:var(--ac)}
+.bub.ok{background:#2e8b57;color:#fff;border-color:#2e8b57}.bub.bad{background:var(--er);color:#fff;border-color:var(--er)}
+.shf{position:sticky;bottom:0;background:var(--sf);padding:10px 0 4px}
 </style></head><body>
+<div id="splash"><div class="lg"><svg width="56" height="56" viewBox="0 0 24 24" fill="none"><rect x="3" y="12" width="4.5" height="8" rx="1.6" fill="var(--ac)" opacity=".55"/><rect x="9.75" y="7" width="4.5" height="13" rx="1.6" fill="var(--ac)" opacity=".8"/><rect x="16.5" y="3" width="4.5" height="17" rx="1.6" fill="var(--ac)"/></svg></div><h1>Eraslan Education</h1><div class="sub">Sınav Takip</div><div class="bar"><i></i></div><div class="st" id="spt"></div></div>
 <div id="app"></div><div id="modal"></div>
 <script>
 'use strict';
 const K='sinavTakipV1',DAYS=['Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi','Pazar'],AB=['Pzt','Sal','Çar','Per','Cum','Cmt','Paz'];
-const I={home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',list:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>',book:'<path d="M4 5a2 2 0 012-2h6v17H6a2 2 0 00-2 2z"/><path d="M20 5a2 2 0 00-2-2h-6v17h6a2 2 0 012 2z"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',trash:'<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>',plus:'<path d="M12 5v14M5 12h14"/>',edit:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',down:'<path d="M12 4v11M7 11l5 5 5-5M5 20h14"/>',send:'<path d="M5 12h14M13 6l6 6-6 6"/>',up:'<path d="M12 16V5M7 9l5-5 5 5M5 20h14"/>',play:'<path d="M8 5l11 7-11 7z"/>',note:'<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/>'};
+const I={home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',list:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>',book:'<path d="M4 5a2 2 0 012-2h6v17H6a2 2 0 00-2 2z"/><path d="M20 5a2 2 0 00-2-2h-6v17h6a2 2 0 012 2z"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',trash:'<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>',plus:'<path d="M12 5v14M5 12h14"/>',edit:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',down:'<path d="M12 4v11M7 11l5 5 5-5M5 20h14"/>',clock:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 3h6"/>',doc:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 13h6M9 17h6"/>',chevD:'<path d="M6 9l6 6 6-6"/>',chevU:'<path d="M6 15l6-6 6 6"/>',send:'<path d="M5 12h14M13 6l6 6-6 6"/>',up:'<path d="M12 16V5M7 9l5-5 5 5M5 20h14"/>',play:'<path d="M8 5l11 7-11 7z"/>',note:'<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/>'};
 const ic=(n,s=18)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${I[n]}</svg>`;
 const TYT=[['TYT Türkçe',40],['TYT Sosyal',20],['TYT Matematik',40],['TYT Fen',20]];
 const YA={'Sayısal':[['AYT Matematik',40],['AYT Fizik',14],['AYT Kimya',13],['AYT Biyoloji',13]],
@@ -153,10 +192,10 @@ const tk=n=>{const b=n.replace(/^(TYT|AYT|YDT) /,'');return T[b]?b:(T[n]?n:null)
 const topics=n=>{const k=tk(n);return k?T[k]:[]};
 const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const defS=()=>({rest:6,kurum:{slots:[],cells:{}},kisisel:{slots:[],cells:{}}});
-const def=()=>({user:null,exams:[],targets:{},sched:defS(),theme:'light',pal:'lavanta',auto:true,hoca:{},rem:{on:false,lead:10,motiv:true}});
+const def=()=>({user:null,exams:[],targets:{},sched:defS(),theme:'light',pal:'lavanta',auto:true,hoca:{},rem:{on:false,lead:10,motiv:true},goalsOpen:false,tlog:[],plog:[],timer:{run:false,start:0,acc:0,subj:''},exm:{files:[],folder:'',last:0,key:{},prog:{}}});
 function norm(r){if(!r||!Array.isArray(r.exams)||!r.sched)return def();const s=r.sched;
 if(typeof s.rest!=='number'||!s.kurum||!Array.isArray(s.kurum.slots)||!s.kisisel||!Array.isArray(s.kisisel.slots))r.sched=defS();
-r.targets=r.targets||{};r.theme=r.theme||'light';r.hoca=r.hoca||{};r.pal=PAL[r.pal]?r.pal:'lavanta';r.rem=r.rem||{on:false,lead:10,motiv:true};if(r.auto===undefined)r.auto=true;return r}
+r.targets=r.targets||{};r.theme=r.theme||'light';r.hoca=r.hoca||{};r.pal=PAL[r.pal]?r.pal:'lavanta';r.rem=r.rem||{on:false,lead:10,motiv:true};r.goalsOpen=!!r.goalsOpen;r.tlog=r.tlog||[];r.exm=(r.exm&&Array.isArray(r.exm.files))?r.exm:{files:[],folder:'',last:0};r.exm.key=r.exm.key||{};r.exm.prog=r.exm.prog||{};r.seenVer=r.seenVer||'';r.plog=r.plog||[];r.timer=r.timer||{run:false,start:0,acc:0,subj:''};if(r.auto===undefined)r.auto=true;return r}
 function load(){try{return norm(JSON.parse(localStorage.getItem(K)))}catch(e){return def()}}
 function save(){_dirty=true;idbSet(S);if(isNat()){clearTimeout(_mir);_mir=setTimeout(mirrorWrite,1200)}if(S.rem&&S.rem.on){clearTimeout(_remS);_remS=setTimeout(()=>remSync(),1500)}try{localStorage.setItem(K,JSON.stringify(S))}catch(e){toast('Kayıt yapılamadı: tarayıcı depolaması kapalı veya dolu.')}}
 let S=load(),tab='home',sp='kurum',cm={},_cb=null;
@@ -188,10 +227,10 @@ function freq(){const m={};S.exams.forEach(e=>Object.entries(e.wrong||{}).forEac
 return Object.entries(m).map(([k,c])=>{const a=k.split('||');return{d:a[0],t:a[1],c}}).sort((a,b)=>b.c-a.c)}
 
 function render(){applyT();if(!S.user){return ob()}
-const v={home,exams,sched,notes,study,vids,cur,prof}[tab]();$('#app').innerHTML=v+nav();if(tab==='prof')pst()}
-function nav(){const t=[['home','home','Ana'],['exams','list','Denemeler'],['sched','cal','Program'],['notes','note','Notlar'],['study','target','Koç'],['prof','user','Profil']];
+const v={home,exams,sched,time:timev,exam:examv,notes,study,vids,cur,prof}[tab]();$('#app').innerHTML=v+nav();if(tab==='prof')pst()}
+function nav(){const t=[['home','home','Ana'],['exams','list','Deneme'],['sched','cal','Program'],['time','clock','Süre'],['notes','note','Notlar'],['study','target','Koç'],['prof','user','Profil']];
 return '<div class="nav">'+t.map(x=>`<button data-tour="nav-${x[0]}" class="${(tab===x[0]||(x[0]==='study'&&(tab==='cur'||tab==='vids')))?'on':''}" onclick="go('${x[0]}')">${ic(x[1],22)}<span>${x[2]}</span></button>`).join('')+'</div>'}
-function go(t){tab=t;if(t==='study')cVis=15;render();scrollTo(0,0)}
+function go(t){tab=t;if(t==='study')cVis=15;render();scrollTo(0,0);if(t==='exam')saRefresh()}
 function goalInputs(e,t){return `<div class="g2" style="gap:12px">`+subsFor(e,t).map((a,i)=>`<div><div class="mu" style="margin-bottom:4px">${esc(a[0])} <span>(${a[1]})</span></div><input id="og${i}" type="number" inputmode="decimal" min="0" max="${a[1]}" step="0.25" placeholder="Net"></div>`).join('')+`</div>`}
 function obG(){const e=$('#oe').value,t=$('#ot').value;$('#otg').innerHTML=goalInputs(e,t)}
 function ob(){$('#app').innerHTML=`<div style="padding-top:4vh"><div class="brand">${ic('target',32)}</div><h1 style="font-size:27px">Sınav Takip'e hoş geldin</h1><p class="mu" style="margin:6px 0 16px">Hazırlığını tek yerden yönet.</p>
@@ -209,7 +248,7 @@ function ob(){$('#app').innerHTML=`<div style="padding-top:4vh"><div class="bran
 function reg(){const n=$('#on').value.trim(),m=$('#om').value.trim(),e=$('#oer');
 const bad=!n?'Adını yaz.':!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m)?'Geçerli bir e-posta yaz.':!$('#oc').checked?'Devam etmek için gizlilik bilgilendirmesini onayla.':'';
 if(bad){e.textContent=bad;return}
-S.user={name:n,email:m,exam:$('#oe').value,track:$('#ot').value};S.targets={};subsFor(S.user.exam,S.user.track).forEach((a,i)=>{const v=parseFloat(($('#og'+i)||{}).value);if(v>0)S.targets[a[0]]=Math.min(v,a[1])});save();tab='home';render();intro()}
+S.user={name:n,email:m,exam:$('#oe').value,track:$('#ot').value};S.seenVer=VER;S.targets={};subsFor(S.user.exam,S.user.track).forEach((a,i)=>{const v=parseFloat(($('#og'+i)||{}).value);if(v>0)S.targets[a[0]]=Math.min(v,a[1])});save();tab='home';render();intro()}
 function privacy(){modal(`<h1>Gizlilik bilgilendirmesi</h1><p class="mu" style="margin:6px 0 12px">Taslak metin</p>
 <div class="card"><b>Hangi bilgiler?</b><p class="mu">Adın, e-postan, hedef sınavın ve bölümün.</p></div>
 <div class="card"><b>Ne için?</b><p class="mu">Sana hitap etmek, uygulamayı bölümüne göre iyileştirmek ve geri bildirimlerine dönüş yapmak için. E-posta yalnızca iletişim içindir.</p></div>
@@ -228,10 +267,12 @@ const v=e.map(total),mn=Math.min(...v),mx=Math.max(...v),r=(mx-mn)||1,W=300,H=90
 const p=v.map((y,i)=>[10+i*(W-20)/(v.length-1),H-10-(y-mn)/r*(H-24)]);
 return `<svg viewBox="0 0 ${W} ${H}" width="100%"><polyline fill="none" stroke="var(--ac)" stroke-width="2" points="${p.map(a=>a.join(',')).join(' ')}"/>${p.map((a,i)=>`<circle cx="${a[0]}" cy="${a[1]}" r="3" fill="var(--ac)"/><text x="${a[0]}" y="${a[1]-6}" text-anchor="middle">${v[i]}</text>`).join('')}</svg>`}
 function greet(){const h=new Date().getHours();return h<5?"İyi geceler":h<12?"Günaydın":h<18?"İyi günler":"İyi akşamlar"}
-function goalsCard(){const rows=subs().filter(a=>+S.targets[a[0]]>0);
-const body=rows.length?rows.map(([n])=>{const t=+S.targets[n],sr=series(n),l=sr.length?sr[sr.length-1]:null,ok=l!==null&&l>=t;
-return `<div style="margin-top:14px"><div class="row sp"><span>${esc(n)}</span><span class="mu"><b style="color:${ok?'var(--ac)':'var(--tx)'}">${l===null?'—':l}</b> / hedef ${t}</span></div><div class="bar" style="height:8px"><i style="width:${l===null?0:Math.max(0,Math.min(100,l/t*100))}%;${ok?'':'background:var(--wa)'}"></i></div></div>`}).join(''):'<p class="mu" style="margin:10px 0 0">Her ders için hedef net belirle, ilerlemeni burada gör.</p>';
-return `<div class="card" data-tour="home-goals"><div class="row sp"><b>Hedeflerim</b><button class="btn s g" onclick="tgForm()">${ic('edit',16)}${rows.length?'Düzenle':'Hedef belirle'}</button></div>${body}</div>`}
+const dateStr=()=>{const d=new Date();return DAYS[(d.getDay()+6)%7]+', '+d.toLocaleDateString('tr-TR',{day:'numeric',month:'long',year:'numeric'})+' · '+d.toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'})};
+function goalsToggle(){S.goalsOpen=!S.goalsOpen;save();render()}
+function goalsCard(){const open=!!S.goalsOpen,st=subs().filter(a=>+S.targets[a[0]]>0).map(([n])=>{const t=+S.targets[n],sr=series(n),l=sr.length?sr[sr.length-1]:null;return{n,t,l,ok:l!==null&&l>=t,p:l===null?0:Math.max(0,Math.min(1,l/t))}});
+const done=st.filter(x=>x.ok).length,avg=st.length?st.reduce((a,x)=>a+x.p,0)/st.length:0;
+const body=!st.length?'<p class="mu" style="margin:10px 0 0">Her ders için hedef net belirle, ilerlemeni burada gör.</p>':open?st.map(x=>`<div style="margin-top:14px"><div class="row sp"><span>${esc(x.n)}</span><span class="mu"><b style="color:${x.ok?'var(--ac)':'var(--tx)'}">${x.l===null?'—':x.l}</b> / hedef ${x.t}</span></div><div class="bar" style="height:8px"><i style="width:${Math.round(x.p*100)}%;${x.ok?'':'background:var(--wa)'}"></i></div></div>`).join(''):`<div class="bar" style="height:8px;margin-top:12px"><i style="width:${Math.round(avg*100)}%"></i></div>`;
+return `<div class="card" data-tour="home-goals"><div class="row sp" style="cursor:pointer" onclick="goalsToggle()"><div><b>Hedeflerim</b><div class="mu">${st.length?done+' / '+st.length+' hedefe ulaşıldı':'Henüz hedef yok'}</div></div><div class="row" style="gap:8px"><button class="btn s g" onclick="event.stopPropagation();tgForm()">${ic('edit',16)}${st.length?'Düzenle':'Belirle'}</button><span style="color:var(--mu);display:flex">${ic(open?'chevU':'chevD',22)}</span></div></div>${body}</div>`}
 function todayCard(){const d=(new Date().getDay()+6)%7,now=new Date(),nm=now.getHours()*60+now.getMinutes();
 if(d===S.sched.rest)return `<h2>Bugün</h2><div class="card"><b>Bugün dinlenme günün</b><div class="mu">Programda bugün ders yok. İyi dinlen, yarın devam.</div></div>`;
 const it=[];['kurum','kisisel'].forEach(k=>{const P=S.sched[k];P.slots.forEach((sl,i)=>{const v=P.cells[i+'|'+d];if(v)it.push({s:sl[0],e:sl[1],v,k})})});
@@ -240,15 +281,15 @@ if(!it.length)return `<h2>Bugün</h2><div class="card"><div class="mu">Bugün i�
 const nx=it.findIndex(x=>tm(x.e)>nm);
 return `<h2>Bugün</h2><div class="card" style="padding:6px 18px">${it.map((x,i)=>`<div class="row" style="padding:14px 0;${i?'border-top:1px solid var(--bd)':''}"><div class="mu" style="width:56px;flex:none">${x.s}<br>${x.e}</div><div style="flex:1"><b>${esc(x.v)}</b><div class="mu">${x.k==='kurum'?'Ders programı':'Çalışma'}</div></div>${i===nx?'<span class="chip" style="background:var(--ac);color:var(--acb);margin:0">Sıradaki</span>':''}</div>`).join('')}</div>`}
 function home(){const e=sorted(),l=e[e.length-1],pr=e.length>1?e[e.length-2]:null,w=warns().slice(0,2),u=S.user,df=l&&pr?r1(total(l)-total(pr)):null;
-const td=DAYS[(new Date().getDay()+6)%7]+', '+new Date().toLocaleDateString('tr-TR',{day:'numeric',month:'long'});
+const td=dateStr();
 const tile=(ic_,t,f)=>`<button class="tile" onclick="${f}"><span class="ti">${ic(ic_,22)}</span>${t}</button>`;
-return `<div class="mu">${td}</div><h1 style="margin-top:2px">${greet()}, ${esc(u.name)}</h1>
+return `<div class="mu" id="hdate">${td}</div><h1 style="margin-top:2px">${greet()}, ${esc(u.name)}</h1>
 ${goalsCard()}<div class="card hero" data-tour="home-card"><div class="row sp"><span class="mu">Son deneme</span>${df!==null?`<span class="pill" style="color:${df>=0?'var(--ac)':'var(--er)'}">${df>=0?'▲':'▼'} ${Math.abs(df)}</span>`:''}</div>
 <div style="font-size:44px;font-weight:700;line-height:1.1;margin:6px 0 2px">${l?total(l):'—'}</div><div class="mu">${l?esc(l.name)+' · toplam net':'Henüz deneme yok'}</div>
 ${l?chart():'<button class="btn" style="margin-top:18px;width:100%" onclick="exForm()">İlk denemeni ekle</button>'}</div>
 ${todayCard()}
 ${w.length?'<h2>Dikkat</h2>'+w.map(x=>`<div class="card w">${esc(x.t)}</div>`).join(''):''}
-<h2>Hızlı erişim</h2><div class="tiles" data-tour="home-new">${tile('plus','Yeni deneme','exForm()')}${tile('note','Not ekle',"go('notes')")}${tile('cal','Programım',"go('sched')")}${tile('play','Konu videoları',"go('vids')")}</div>`}
+<h2>Hızlı erişim</h2><div class="tiles" data-tour="home-new">${tile('plus','Yeni deneme','exForm()')}${tile('clock','Süre tut',"go('time')")}${tile('cal','Programım',"go('sched')")}${tile('note','Not ekle',"go('notes')")}${tile('target','Koç',"go('study')")}${tile('play','Konu videoları',"go('vids')")}<button class="tile" style="grid-column:1/-1;flex-direction:row;align-items:center;min-height:0;gap:14px" onclick="go('exam')"><span class="ti">${ic('doc',22)}</span><span><b>Sınav</b><span class="mu" style="display:block;font-weight:400">PDF deneme ve testlerini uygulamada çöz</span></span></button></div>`}
 /* ---------- grafikler ---------- */
 let cg={s:'Toplam',m:'net'};
 const lbl=e=>e.date?e.date.slice(8,10)+'.'+e.date.slice(5,7):'';
@@ -317,27 +358,44 @@ const tm=s=>{const p=s.split(':');return +p[0]*60+ +p[1]},fm=m=>String(Math.floo
 function mkSlots(st,en,len,br){const a=[];let m=tm(st);const e=tm(en);while(m+len<=e){a.push([fm(m),fm(m+len)]);m+=len+br}return a}
 function sched(){const P=S.sched[sp],r=S.sched.rest;
 const table=P.slots.length?`<div class="sc"><table class="tb"><tr><th></th>${AB.map((d,i)=>`<th${i===r?' class="rh"':''}>${d}</th>`).join('')}</tr>${P.slots.map((s,i)=>`<tr><td class="t">${s[0]}<br>${s[1]}</td>${AB.map((d,j)=>{if(j===r)return `<td class="rs">${i===Math.floor((P.slots.length-1)/2)?'Dinlenme':''}</td>`;const v=P.cells[i+'|'+j];return `<td class="${v?'f':''}" onclick="cellForm(${i},${j})">${v?esc(v):'+'}</td>`}).join('')}</tr>`).join('')}</table></div><p class="mu">Bir hücreye dokunarak dersi değiştirebilir veya silebilirsin.</p><button class="btn d" onclick="clearT()">${ic('trash')}Tabloyu temizle</button>`
-:`<div class="card mu">Tablo henüz boş. "Tablo oluştur" ile saat aralığını belirle, haftalık tabloyu uygulama hazırlasın.</div>`;
-return `<div class="row sp"><h1>Program</h1><button class="btn s" data-tour="sc-gen" onclick="genForm()">${ic('plus')}Tablo oluştur</button></div>
+:`<div class="card mu">Tablo henüz boş. "Otomatik program" ile dersleri ve saatleri seç, 5 farklı program önerelim.</div>`;
+return `<div class="row sp"><h1>Program</h1><button class="btn s" data-tour="sc-gen" onclick="genForm()">${ic('plus')}Otomatik program</button></div>
 <div class="seg" data-tour="sc-tabs"><button class="${sp==='kurum'?'on':''}" onclick="sp='kurum';render()">Ders programı</button><button class="${sp==='kisisel'?'on':''}" onclick="sp='kisisel';render()">Çalışma programı</button></div>
 <p class="mu">${sp==='kurum'?'Okul, dershane veya kurum dersleri ve etütler.':'Kütüphane veya evdeki kişisel çalışma saatlerin.'}</p>
 <div class="card row sp" data-tour="sc-rest"><div><b>Dinlenme günü</b><div class="mu">Haftada bir gün zorunlu</div></div><select style="width:auto" onchange="setRest(this.value)">${DAYS.map((d,i)=>`<option value="${i}"${i===r?' selected':''}>${d}</option>`).join('')}</select></div>${table}`}
 function setRest(v){S.sched.rest=+v;save();render();toast('Dinlenme günü: '+DAYS[+v])}
 function clearT(){ask('Bu programın tüm hücreleri silinecek.',()=>{S.sched[sp].cells={};save();render();toast('Tablo temizlendi')},'Evet, temizle')}
-function genForm(){const k=sp==='kisisel',b=subs().map(a=>a[0]);
-modal(`<h1>${k?'Çalışma':'Ders'} tablosunu oluştur</h1><p class="mu">Saatleri sen belirle, tabloyu uygulama hazırlasın. ${k?'Dersler dinlenme günü hariç otomatik dağıtılır.':'Sonra hücrelere dokunarak dersleri yerleştirirsin.'} Mevcut tablo yenilenir.</p>
-<div class="g2"><div><label>Başlangıç</label><input id="gs" type="time" value="${k?'17:00':'08:30'}"></div><div><label>Bitiş</label><input id="ge" type="time" value="${k?'22:00':'15:30'}"></div>
-<div><label>Ders süresi (dk)</label><input id="gl" type="number" min="10" max="180" value="${k?50:40}"></div><div><label>Ara (dk)</label><input id="gb" type="number" min="0" max="60" value="10"></div></div>
-${k?`<label>Dahil edilecek dersler</label>${b.map(n=>`<label style="display:inline;margin:0"><input class="cb" type="checkbox" name="gd" value="${esc(n)}" checked><span class="chip">${esc(n)}</span></label>`).join('')}<label style="display:flex;gap:8px;align-items:center;margin-top:14px"><input type="checkbox" id="gw" checked style="width:auto">Zayıf derslere öncelik ver</label>`:''}
-<div class="row" style="margin-top:18px"><button class="btn g" style="flex:1" onclick="closeM()">Vazgeç</button><button class="btn" style="flex:1" onclick="gen()">Oluştur</button></div>`)}
-function gen(){const st=$('#gs').value,en=$('#ge').value,l=+$('#gl').value,b=+$('#gb').value||0;
-if(!st||!en||!(l>=10)){toast('Saatleri ve ders süresini gir.');return}
-const sl=mkSlots(st,en,l,b);if(!sl.length){toast('Bu aralığa hiç ders sığmıyor.');return}if(sl.length>14){toast('En fazla 14 satır olabilir. Aralığı daralt.');return}
-let r=[];if(sp==='kisisel'){r=[...document.querySelectorAll('input[name=gd]:checked')].map(c=>c.value);if(!r.length){toast('En az bir ders seç.');return}
-if($('#gw').checked){r=r.concat(warns().map(x=>x.s).filter(x=>r.includes(x)))}}
-const P=S.sched[sp];P.slots=sl;P.cells={};
-if(r.length)for(let j=0;j<7;j++){if(j===S.sched.rest)continue;sl.forEach((s,i)=>{P.cells[i+'|'+j]=r[(i+j*2)%r.length]})}
-save();closeM();render();toast('Tablo hazır')}
+let G={subj:null,st:'',en:'',ln:50,br:10},GV=[],GS=[];
+const abbr=n=>String(n).replace(/^(TYT|AYT|YDT) /,'').slice(0,3);
+function genForm(){const k=sp==='kisisel',b=subs().map(a=>a[0]);if(!G.subj)G.subj=b.slice();if(!G.st){G.st=k?'17:00':'08:30';G.en=k?'22:00':'15:30';G.ln=k?50:40;G.br=10}
+modal(`<h1>Otomatik ${k?'çalışma':'ders'} programı</h1><p class="mu" style="margin:6px 0 4px">Dersleri ve saatleri seç, 5 farklı program önereyim; beğendiğini seçersin. Dinlenme günün (${DAYS[S.sched.rest]}) boş kalır, diğer 6 gün doldurulur.</p>
+<label>Dersler</label><div>${b.map(n=>`<label style="display:inline;margin:0"><input class="cb" type="checkbox" name="gd" value="${esc(n)}" ${G.subj.includes(n)?'checked':''}><span class="chip">${esc(n)}</span></label>`).join('')}</div>
+<div class="g2"><div><label>Başlangıç saati</label><input id="gs" type="time" value="${G.st}"></div><div><label>Bitiş saati</label><input id="ge" type="time" value="${G.en}"></div>
+<div><label>Ders süresi (dk)</label><input id="gl" type="number" inputmode="numeric" min="10" max="180" value="${G.ln}"></div><div><label>Ara dinlenme (dk)</label><input id="gb" type="number" inputmode="numeric" min="0" max="60" value="${G.br}"></div></div>
+<div class="err" id="ger"></div>
+<div class="row stk"><button class="btn g" style="flex:1" onclick="closeM()">Vazgeç</button><button class="btn" style="flex:1" onclick="genMake()">5 program oluştur</button></div>
+<button class="btn d" style="width:100%" onclick="genEmpty()">Sadece boş tablo oluştur</button>`)}
+function genRead(){const e=$('#ger'),stt=$('#gs').value,en=$('#ge').value,l=+$('#gl').value,br=+$('#gb').value||0,subj=[...document.querySelectorAll('input[name=gd]:checked')].map(c=>c.value);
+G.st=stt;G.en=en;G.ln=l;G.br=br;if(subj.length)G.subj=subj;
+if(!stt||!en||!(l>=10)){e.textContent='Saatleri ve ders süresini gir.';return null}
+const sl=mkSlots(stt,en,l,br);if(!sl.length){e.textContent='Bu aralığa hiç ders sığmıyor.';return null}if(sl.length>14){e.textContent='En fazla 14 satır olabilir. Aralığı daralt.';return null}
+return{sl,subj}}
+function genEmpty(){const r=genRead();if(!r)return;const P=S.sched[sp];P.slots=r.sl;P.cells={};save();closeM();render();toast('Boş tablo hazır')}
+function genVariants(subj,nS){const days=[0,1,2,3,4,5,6].filter(d=>d!==S.sched.rest),m=subj.length,qn=Object.fromEntries(subs().map(a=>[a[0],a[1]]));
+const sc=subj.map(n=>{const r=coachSub(n,qn[n]||40);return r?Math.max(.2,r.sc):1}),mx=Math.max(...sc),ord=subj.map((n,i)=>i).sort((a,b)=>sc[b]-sc[a]).map(i=>subj[i]),wl=[];
+subj.forEach((n,i)=>{const w=1+Math.round(sc[i]/mx*2);for(let k=0;k<w;k++)wl.push(n)});
+const mk=f=>{const c={};days.forEach((d,di)=>{for(let i=0;i<nS;i++)c[i+'|'+d]=f(di,i)});return c};
+return [
+{n:'Dengeli döngü',d:'Dersler her gün sırayla döner, hepsine eşit pay verilir.',c:mk((di,i)=>subj[(i+di*2)%m])},
+{n:'Zayıflara ağırlık',d:'Neti düşük ya da hedefe uzak dersler daha sık yer alır.',c:mk((di,i)=>wl[(i+di*3)%wl.length])},
+{n:'Günlük odak',d:'Her gün 2 derse odaklanılır, bloklar hâlinde çalışılır.',c:mk((di,i)=>{const f=[subj[(2*di)%m],subj[(2*di+1)%m]];return f[Math.floor(i/2)%2]})},
+{n:'Zor dersler önce',d:'Öncelikli dersler günün ilk saatlerinde yer alır.',c:mk((di,i)=>ord[(i+di%Math.min(3,m))%m])},
+{n:'Karma düzen',d:'Dersler her gün farklı sırayla, tekrar etmeden karışır.',c:mk((di,i)=>{const o=subj.slice();let sd=(di+1)*7919;for(let k=o.length-1;k>0;k--){sd=(sd*9301+49297)%233280;const j=Math.floor(sd/233280*(k+1));[o[k],o[j]]=[o[j],o[k]]}return o[i%m]})}]}
+function pvHtml(c){const idx=Object.fromEntries(G.subj.map((n,i)=>[n,i]));
+return `<div class="sc" style="margin:10px -4px 0"><table class="pvt"><tr><th></th>${AB.map((d,j)=>`<th${j===S.sched.rest?' style="color:var(--wa)"':''}>${d}</th>`).join('')}</tr>${GS.map((sl,i)=>`<tr><th>${sl[0]}</th>${AB.map((d,j)=>{if(j===S.sched.rest)return '<td style="background:var(--sf2);opacity:.5"></td>';const v=c[i+'|'+j];return `<td title="${esc(v||'')}" style="background:hsl(${((idx[v]||0)*47)%360} 55% 55% / .3)">${esc(abbr(v||''))}</td>`}).join('')}</tr>`).join('')}</table></div>`}
+function genMake(){const r=genRead();if(!r)return;GS=r.sl;GV=genVariants(G.subj,r.sl.length);genPick()}
+function genPick(){modal(`<h1>5 program hazır</h1><p class="mu" style="margin:6px 0 4px">Birini seç; seçince ${sp==='kisisel'?'çalışma':'ders'} tablosuna yazılır (mevcut tablo yenilenir). Sonra hücrelere dokunup değiştirebilirsin.</p>${GV.map((v,i)=>`<div class="card"><div class="row sp"><div><b>${i+1}. ${v.n}</b><div class="mu">${v.d}</div></div><button class="btn s" style="flex:none" onclick="genApply(${i})">Bunu seç</button></div>${pvHtml(v.c)}</div>`).join('')}<button class="btn g" style="width:100%" onclick="genForm()">Geri dön</button>`)}
+function genApply(i){const P=S.sched[sp];P.slots=GS;P.cells={...GV[i].c};save();closeM();render();toast('Program uygulandı')}
 function cellForm(i,j){const P=S.sched[sp],v=P.cells[i+'|'+j]||'',b=sp==='kisisel'||true?subs().map(a=>a[0]):[];
 modal(`<h1>${DAYS[j]}</h1><p class="mu">${P.slots[i][0]} – ${P.slots[i][1]}</p>
 <label>Hazır ders seç</label><select onchange="if(this.value)$('#cv').value=this.value"><option value="">Seç…</option>${b.map(n=>`<option>${esc(n)}</option>`).join('')}</select>
@@ -415,14 +473,14 @@ function chatLoad(){try{const a=JSON.parse(localStorage.getItem(CK)||'[]');retur
 let CH=chatLoad(),_cbz=false,_skip=false,_fast=false,cVis=15;
 function chatSave(){try{localStorage.setItem(CK,JSON.stringify(CH.filter(m=>!m.ty&&!m.live).map(m=>({r:m.r,h:m.h})).slice(-50)))}catch(e){}}
 const cTrim=()=>{if(CH.length>50)CH=CH.slice(-50)};
-const CHIPS=['Analiz yap','Hangi derse ağırlık vermeliyim?','Netim düşüyor mu?','Hedefime ne kadar uzağım?','Tekrar eden hatalarım','Haftalık çalışma payı','Video öner'];
+const CHIPS=['Analiz yap','Hangi derse ağırlık vermeliyim?','Netim düşüyor mu?','Hedefime ne kadar uzağım?','Tekrar eden hatalarım','Haftalık çalışma payı','Hız analizim','Video öner','Uygulamayı tanıt','Yatırımcı sunumu'];
 const nz=x=>String(x).toLocaleLowerCase('tr').replace(/ı/g,'i').replace(/ş/g,'s').replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ö/g,'o').replace(/ç/g,'c');
 const sleep=ms=>new Promise(r=>setTimeout(r,_fast?0:ms));
 const ul=a=>`<ul>${a.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
 const vlink=(n,t,l)=>`<a class="btn s g" style="text-decoration:none;margin-top:10px" target="_blank" rel="noopener" href="${ytUrl(n,t||'',ph(n))}">${ic('play',16)}${l||'Video bul'}</a>`;
 function cData(){const ex=sorted(),res=subs().map(a=>coachSub(a[0],a[1])).filter(Boolean).sort((a,b)=>b.sc-a.sc),pr=res.filter(r=>r.sc>=1.5).slice(0,4),rest=res.filter(r=>!pr.includes(r)),sum=pr.reduce((a,r)=>a+r.sc,0),sh=pr.map(r=>Math.round(85*r.sc/sum/5)*5),bak=Math.max(0,100-sh.reduce((a,b)=>a+b,0)),tot=ex.map(total);
 return{ex,res,pr,rest,sh,bak,tot,tt:trendOf(tot,1)}}
-const bCap=()=>`<b>Neler yapabilirim?</b>${ul(['Netlerini ve doğru / yanlış / boş dağılımını analiz ederim','Hedefine ne kadar uzak olduğunu hesaplarım','Hangi derse ne kadar ağırlık vermen gerektiğini söylerim','Netinin düşüşte mi yükselişte mi olduğunu gösteririm','Tekrar eden hatalarını bulur, video öneririm'])}<b>Yetkim</b>${ul(['Yalnızca bu uygulamadaki deneme, hedef ve yanlış konu bilgilerini okurum','Hiçbir şeyi değiştirmem ya da silmem','Verilerini internete göndermem, hesaplamayı telefonunda yaparım','Bir ekranı açmam gerekirse sana düğme gösteririm, sen basarsın'])}Aşağıdaki başlıklardan birini seç ya da yaz: <i>"analiz yap"</i>.`;
+const bCap=()=>`<b>Neler yapabilirim?</b>${ul(['Netlerini ve doğru / yanlış / boş dağılımını analiz ederim','Hedefine ne kadar uzak olduğunu hesaplarım','Hangi derse ne kadar ağırlık vermen gerektiğini söylerim','Netinin düşüşte mi yükselişte mi olduğunu gösteririm','Tekrar eden hatalarını bulur, video öneririm','Uygulamayı tanıtır, nerede ne olduğunu ve nasıl kullanılacağını anlatırım','Süre ve soru hızını yorumlarım'])}<b>Yetkim</b>${ul(['Yalnızca bu uygulamadaki deneme, hedef ve yanlış konu bilgilerini okurum','Hiçbir şeyi değiştirmem ya da silmem','Verilerini internete göndermem, hesaplamayı telefonunda yaparım','Bir ekranı açmam gerekirse sana düğme gösteririm, sen basarsın'])}Aşağıdaki başlıklardan birini seç ya da yaz: <i>"analiz yap"</i>.`;
 function bGenel(d){const l=d.tot[d.tot.length-1],g={up:'yükselişte',down:'düşüşte',flat:'sabit seyrediyor'}[d.tt.k];
 return `<b>Genel durum</b><br>${d.ex.length} denemene baktım. ${g?`Toplam netin ${g}.`:'Eğilim görmek için en az iki deneme gerekir.'} Son toplam net <b>${r1(l)}</b>, ortalama ${r1(mean(d.tot))}, en iyi ${r1(Math.max(...d.tot))}.`}
 function bPrio(d){if(!d.pr.length)return `<b>Ağırlık sırası</b><br>Belirgin bir öncelik görünmüyor: derslerin hedefe yakın ya da net eğilimin olumlu.`;
@@ -436,17 +494,45 @@ const bTrend=d=>`<b>Net eğilimi</b>`+ul(d.res.map(r=>`${r.n}: ${r.tr.k==='down'
 const bPlan=d=>d.pr.length?`<b>Haftalık çalışma payı önerisi</b>${ul(d.pr.map((r,i)=>`${r.n}: %${d.sh[i]}`).concat(d.bak?[`Güçlü derslerin bakımı: %${d.bak}`]:[]))}Bunu Program sekmesindeki çalışma tablosuna yerleştirebilirsin.<br><button class="btn s g" style="margin-top:10px" onclick="go('sched')">Programa git</button>`:`<b>Haftalık plan</b><br>Belirgin bir öncelik görünmüyor; çalışma zamanını derslere dengeli dağıtabilirsin.`;
 function bVid(d){const fr=freq().filter(x=>x.c>=2).slice(0,2);if(!d.pr.length&&!fr.length)return `<b>Video önerisi</b><br>Öncelikli bir ders ya da tekrar eden hata görünmüyor. Videolar sekmesinden istediğin konuyu arayabilirsin.`;
 return `<b>Video önerileri</b>`+d.pr.slice(0,3).map(r=>`<div style="margin-top:10px">${esc(r.n)} ${vlink(r.n,'','Genel tekrar')}</div>`).join('')+fr.map(x=>`<div style="margin-top:10px">${esc(x.d)} · ${esc(x.t)} ${vlink(x.d,x.t,'Konu videosu')}</div>`).join('')}
+const FAQ=[
+{q:`Verilerim nerede saklanıyor?`,a:`Tüm deneme, hedef, program ve not verilerin yalnızca bu telefonda, uygulamanın kendi alanında saklanır. Hiçbir sunucuya gönderilmez. Geri bildirim gönderirsen yalnızca yazdığın mesaj, senin onayınla e-posta uygulaman üzerinden bize ulaşır.`,k:['nerede sakl','sunucu','saklan','kimse gor','baskalari','gizlilik'],g:'prof',gl:'Profil'},
+{q:`Telefonumu değiştirirsem verilerim ne olur?`,a:`Veriler cihazında durduğu için otomatik taşınmaz. Eski telefonda Profil → Yedek ve veri → Tam yedek al, dosyayı yeni telefona gönder, yeni telefonda Yedekten yükle de. Tam yedek notları ve fotoğrafları da içerir.`,k:['telefon degis','yeni telefon','tasi','aktar','telefonumu'],g:'prof',gl:'Profil'},
+{q:`Yedeği nasıl alırım, nasıl geri yüklerim?`,a:`Profil → Yedek ve veri bölümünde Hızlı yedek (notlar hariç) ya da Tam yedek (notlar ve fotoğraflar dahil) alabilirsin; dosyayı Paylaş / kaydet ile Drive, WhatsApp ya da dosyalara kaydet. Geri yüklemek için aynı bölümde Yedekten yükle'ye bas ve dosyayı seç. Uygulamadan çıkarken otomatik yedek de alınır.`,k:['yedek','yedekle','geri yukle'],g:'prof',gl:'Profil'},
+{q:`Uygulamayı güncellersem verilerim silinir mi?`,a:`Hayır. Yeni sürümü eskisinin üzerine kurarsan kayıtların korunur. Yine de güncellemeden önce Tam yedek almanı öneririm. Uygulamayı silip yeniden kurarsan veriler gider.`,k:['guncelle','silinir mi','guncelleme','yeni surum']},
+{q:`Net nasıl hesaplanıyor?`,a:`Net = Doğru − Yanlış ÷ 4. Boş sorular neti etkilemez. Örneğin 20 doğru, 8 yanlış → 20 − 2 = 18 net.`,k:['net nasil','hesaplan','formul','4 yanlis']},
+{q:`Hedef netimi nasıl belirlerim?`,a:`Ana sayfadaki Hedeflerim kartında Düzenle düğmesine bas ve her ders için hedef net yaz. Hedefin altında kalan dersleri Koç sana söyler.`,k:['hedef nasil','hedef belirle','hedef koy','hedefi degistir'],g:'home',gl:'Ana sayfa'},
+{q:`Deneme eklerken yanlış konuları neden işaretlemeliyim?`,a:`İşaretlediğin konular Koç ve Videolar bölümünde tekrar eden hataları bulmak için kullanılır. Aynı konu iki denemede yanlış çıkarsa öne çıkar ve video önerilir.`,k:['yanlis konu','konu isaret','neden isaret']},
+{q:`Otomatik program nasıl çalışır?`,a:`Program sekmesinde Otomatik program düğmesine bas; dersleri, başlangıç ve bitiş saatini, ders süresini ve ara süresini seç. Dinlenme günün hariç 6 gün için 5 farklı program önerilir, beğendiğini seçersin. Sonra hücrelere dokunarak düzenleyebilirsin.`,k:['otomatik program','program nasil','program olustur','tablo olustur','ders programi','calisma programi'],g:'sched',gl:'Programa git'},
+{q:`Hatırlatıcılar (bildirimler) gelmiyor, ne yapmalıyım?`,a:`Profil → Hatırlatıcılar anahtarının açık ve telefon bildirim izninin verilmiş olduğunu kontrol et; programında dolu hücreler olmalı. Bazı telefonlarda (örneğin Xiaomi) pil tasarrufu uygulamayı kısıtlayabilir: Ayarlar → Uygulamalar → Sınav Takip → Pil ve Otomatik başlatma bölümünden kısıtlamayı kaldır. Test bildirimi düğmesiyle deneyebilirsin.`,k:['hatirlatici','bildirim','gelmiyor'],g:'prof',gl:'Profil'},
+{q:`Not defterine kaç fotoğraf ekleyebilirim?`,a:`Toplam 100 fotoğraf. Fotoğraflar küçültülüp sıkıştırılarak telefonda saklanır. Kamera ya da galeriden ekleyebilirsin.`,k:['fotograf','kac not','not defter'],g:'notes',gl:'Notlara git'},
+{q:`Konu videoları nasıl bulunuyor?`,a:`Videolar sekmesinde ders ve konu seçip bir hoca seçersin; uygulama o konuyu YouTube'da aratır. İnternet gerekir. Hangi hocanın en çok izlendiğini ölçmez, seçimi sen yaparsın.`,k:['video nasil','videolar','youtube','hoca'],g:'vids',gl:'Videolara git'},
+{q:`Koç yapay zekâ mı, nasıl analiz yapıyor?`,a:`Koç şu an telefonda çalışan kural tabanlı bir analiz sistemidir. Netlerinin eğilimini, hedefe uzaklığını, doğru / yanlış / boş dağılımını ve tekrar eden hataları hesaplar. Üretken bir yapay zekâ değildir ve verilerini internete göndermez.`,k:['yapay zeka','koc nasil','koc ai','koc calis'],g:'study',gl:'Koç'},
+{q:`Süre tutma ve hız analizi nasıl çalışır?`,a:`Süre sekmesinde sayaçla çalışma süreni tutarsın. Hız analizinde çözdüğün soru sayısını ve süreni yazarsın; uygulama soru başına süreni, sınav formatındaki ideal süreyle karşılaştırır. Sınav formatı genel bir varsayımdır, resmî kılavuza göre değiştirebilirsin.`,k:['sure tut','hiz analiz','sayac','kronometre'],g:'time',gl:'Süre'},
+{q:`Başka cihazdan giriş yapabilir miyim?`,a:`Hesap ya da giriş sistemi yoktur; veriler yalnızca bulunduğu telefondadır. Başka cihaza geçmek için Tam yedek alıp yeni cihazda yükleyebilirsin.`,k:['baska cihaz','giris yap','hesap','kayit ol','sifre']},
+{q:`Temayı ya da rengi nasıl değiştiririm?`,a:`Profil → Görünüm bölümünden Açık, Koyu ya da Otomatik modu ve dört renk paletinden birini seçebilirsin.`,k:['tema','renk','karanlik','koyu mod','palet'],g:'prof',gl:'Profil'},
+{q:`Verilerimi nasıl silerim?`,a:`Profil → Tehlikeli alan → Tüm verileri sil. Bu işlem geri alınamaz; silmeden önce yedek alabilirsin.`,k:['verilerimi sil','hepsini sil','sifirla']},
+{q:`Dinlenme günü neden zorunlu?`,a:`Düzenli dinlenmenin çalışma verimi için önemli olduğu fikriyle haftada bir gün dinlenme günü ayrılır. Günü Program sekmesinden değiştirebilirsin ama kaldıramazsın.`,k:['dinlenme gunu','neden dinlen'],g:'sched',gl:'Programa git'},
+{q:`Geri bildirimime ne zaman dönülür?`,a:`Geri bildirim formu mesajını e-posta uygulaman üzerinden gönderir. Şikayetlere 3 saat içinde ilgilenilmesi hedeflenir, gerekirse sana geri dönülür. Cevap e-postası spam klasörüne düşebilir, onu da kontrol et.`,k:['geri bildirim','sikayet','geri donus','iletisim']}];
+const faqFind=q=>{const r=FAQ.map(f=>({f,s:f.k.filter(w=>(' '+q).includes(' '+w)).length})).sort((a,b)=>b.s-a.s)[0];return r&&r.s>=1?r.f:null};
+const bTanit=()=>`<b>Sınav Takip</b> · Eraslan Education<br>Deneme netlerini kaydedip grafikte izlediğin, hedef koyduğun, programını otomatik hazırlattığın, notlarını tuttuğun ve çalışma sürenle soru hızını analiz ettiğin sınav hazırlık uygulaması. Veriler telefonunda kalır.${ul(['Deneme ve net takibi (YKS, KPSS, DGS, ALES, LGS, YDS)','Ders başına hedef net ve ilerleme','Otomatik ders ve çalışma programı, hatırlatıcılar','Not defteri: yazı ve fotoğraf','Süre sayacı ve soru hızı analizi','Koç: veriye dayalı analiz ve tavsiye','Konu videosu önerileri'])}<button class="btn s g" style="margin-top:6px" onclick="tour(0)">Gezintiyi başlat</button>`;
+const bYat=()=>`<b>Yatırımcı özeti</b> · Sınav Takip v${VER}${ul(['Sorun: Öğrenciler deneme sonuçlarını, programlarını ve eksik konularını farklı yerlerde tutuyor; neye çalışacaklarını veriye bakarak göremiyor.','Çözüm: Tek uygulamada net takibi, hedef, otomatik program, not, süre / hız analizi ve Koç analizi.','Fark: Veriler cihazda tutulur (sunucu yok, gizlilik güçlü, işletme maliyeti düşük); internetsiz çalışır; Türkiye sınav formatlarına göre kurulu.','Durum: Çalışan Android sürümü var; hesap sistemi yok.'])}<b>Seçenekler (karar verilmedi, öneri):</b>${ul(['Gelir modeli: ek özellikler için premium sürüm ya da kurum / dershane lisansı','Yol haritası: cihazlar arası eşitleme, üretken yapay zekâ destekli Koç, iOS sürümü'])}<b>Dürüst sınırlar:</b>${ul(['Koç şu an kural tabanlı bir analiz sistemidir, üretken yapay zekâ değildir','Elimde kullanıcı sayısı gibi ölçüm verisi yok; bu yüzden pazar ya da büyüme iddiası öne sürmüyorum'])}`;
+function bHiz(){const st=tStats(),l=S.plog[S.plog.length-1];if(!S.tlog.length&&!l)return `Henüz süre ya da hız verin yok. Süre sekmesinde sayaç tutabilir, soru hızını analiz ettirebilirsin.<br><button class="btn s g" style="margin-top:10px" onclick="go('time')">Süre sekmesi</button>`;
+return `<b>Süre ve hız</b>${ul([`Bu hafta ${hm(st.wk)}, bugün ${hm(st.td)} çalıştın.`,l?`Son hız analizin (${l.subj}): soru başına ${r1(l.pace)} sn, ${vOf(l.ratio).toLowerCase()}.`:'Henüz hız analizi yapmadın.'])}<button class="btn s g" style="margin-top:6px" onclick="go('time')">Süre sekmesi</button>`}
 function cAnswer(t){const q=nz(t),nod=`Henüz deneme verin yok. Denemeler sekmesinden ilk denemeni ekle, sonra analiz yapabilirim.<br><button class="btn s g" style="margin-top:10px" onclick="exForm()">Deneme ekle</button>`;
 if(/^(merhaba|selam|naber|hey)/.test(q))return [`Merhaba ${esc(S.user.name)}! Ne yapalım?`];
 if(/tesekkur|sag ol|eyvallah/.test(q))return ['Rica ederim. Başka bir şey sorabilirsin.'];
 if(/yardim|ne yapabil|neler yap|yetki|kimsin|ne is yar/.test(q))return [bCap()];
+if(/yatirimci|yatirim|pitch|sunum|gelir modeli|pazar/.test(q))return [bYat()];
+if(/tanit|uygulama nedir|bu uygulama|ne ise yarar|anlat bana/.test(q))return [bTanit()];
+if(/nasil|nerede|nereden|neden|gelmiyor|olur mu|ne olur|mumkun|var mi|silinir|kac|degistir|yapabilir miyim|(^|\s)(mi|mu)(\s|$)/.test(q)){const f=faqFind(q);if(f)return [`<b>${esc(f.q)}</b><br>${esc(f.a)}`+(f.g?`<br><button class="btn s g" style="margin-top:10px" onclick="go('${f.g}')">${f.gl||'Git'}</button>`:'')]}
+if(/hiz|sure tut|sayac|kac saat|ne kadar calis/.test(q))return [bHiz()];
 if(!sorted().length)return /analiz|agirlik|oncelik|dus|yuksel|trend|hedef|hata|yanlis|plan|video|net|ders|calis/.test(q)?[nod]:[`Bunu anlayamadım. "Neler yapabilirsin?" diye sorabilirsin.`];
 const d=cData();
 const hit=subs().filter(a=>{const b=nz(a[0].replace(/^(TYT|AYT|YDT) /,'')).split(/[-\s]/)[0];return b.length>=4&&q.includes(b)});
 if(hit.length){const out=hit.slice(0,2).map(a=>{const r=coachSub(a[0],a[1]);return r?`<b>${esc(r.n)}</b>${ul(r.R)}${vlink(r.n)}`:`${esc(a[0])} için henüz deneme verin yok.`});return out}
 if(/analiz|degerlendir|genel|durumum|durum/.test(q))return [bGenel(d),bPrio(d),bRest(d),bErr()].filter(Boolean);
 if(/agirlik|oncelik|hangi ders|neye calis|calismal|odaklan|zayif/.test(q))return [bPrio(d)];
-if(/dus|yuksel|trend|gelisim|ilerle|artiyor|azaliyor/.test(q))return [bTrend(d)];
+if(/dus|yuksel|trend|gelisim|ilerle|artiyor|azaliyor|netim|netlerim/.test(q))return [bTrend(d)];
 if(/hedef/.test(q))return [bGoal(d)];
 if(/hata|yanlis|konu|eksik/.test(q))return [bErr()];
 if(/plan|haftalik|program|ne kadar calis/.test(q))return [bPlan(d)];
@@ -504,42 +590,47 @@ return `${subtabs()}<h1>Müfredat rehberi</h1><label>Ders</label><select data-to
 ${l.length?l.map(t=>`<div class="card"><div class="row sp"><b>${esc(t[0])}</b><span class="row" style="gap:6px"><span class="chip">${lb[t[1]]}</span><a class="btn s" style="text-decoration:none;padding:5px 8px" target="_blank" rel="noopener" aria-label="Video" href="${ytUrl(n,t[0],ph(n))}">${ic('play',16)}</a></span></div><div class="bar"><i style="width:${t[1]*33.3}%"></i></div></div>`).join(''):'<div class="card mu">Bu ders için konu listesi henüz yok.</div>'}`}
 
 /* ---------- profil ---------- */
+const AC={};
 function prof(){const u=S.user,ex=S.exams,best=ex.length?Math.max(...ex.map(total)):'—',lb=S.lastBackup?new Date(S.lastBackup).toLocaleDateString('tr-TR'):'Yok';
 const st=(x,y)=>`<div class="card" style="margin:0;text-align:center;padding:12px 6px"><div style="font-size:19px;font-weight:700">${x}</div><div class="mu">${y}</div></div>`;
 const gd=[['Ana sayfa',0],['Denemeler',4],['Programlar',7],['Notlar',10],['Koç',11],['Videolar',12],['Müfredat',13],['Geri bildirim',17],['Yedek ve veri',18]];
+const sec=(id,icn,t,sub,body,tr)=>`<details class="acc" ${tr?`data-tour="${tr}"`:''} ${AC[id]?'open':''} ontoggle="AC['${id}']=this.open"><summary><span class="ti">${ic(icn,20)}</span><span style="flex:1"><b>${t}</b><span class="mu">${sub}</span></span><span class="chev">${ic('chevD',20)}</span></summary><div class="accb">${body}</div></details>`;
+const pal=Object.entries(PAL).map(([k,v])=>{const P=palOf(k,document.documentElement.dataset.t);return `<button class="sw ${S.pal===k?'on':''}" onclick="setPal('${k}')"><span class="dots"><i style="background:${P.bg}"></i><i style="background:${P.sf2}"></i><i style="background:${P.ac}"></i></span>${v.n}</button>`}).join('');
 return `<div class="row" style="gap:14px;margin-bottom:4px"><div style="width:54px;height:54px;border-radius:50%;background:var(--sf2);color:var(--ac);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700">${esc((u.name[0]||'?').toUpperCase())}</div><div><h1 style="margin:0">${esc(u.name)}</h1><div class="mu">${esc(u.exam)} · ${esc(u.track)}</div></div></div>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0">${st(ex.length,'deneme')}${st(best,'en iyi net')}${st(lb,'son yedek')}</div>
-<h2>Bilgilerim</h2><div class="card"><label style="margin-top:0">Ad</label><input id="pn" value="${esc(u.name)}"><label>E-posta (yalnızca iletişim için)</label><input id="pm" type="email" inputmode="email" value="${esc(u.email||'')}"><label>Hedef sınav</label><select id="pe" onchange="fillTr('pe','pt')">${opts(EXAMS,u.exam)}</select>
-<label>Bölüm / alan</label><select id="pt">${opts(trk(u.exam),u.track)}</select><button class="btn" style="width:100%;margin-top:16px" onclick="pSave()">Kaydet</button></div>
-<h2>Görünüm</h2><div class="card" data-tour="pf-theme"><label style="margin-top:0">Mod</label><select onchange="S.theme=this.value;save();render()"><option value="auto"${S.theme==='auto'?' selected':''}>Otomatik (cihaz ayarı)</option><option value="dark"${S.theme==='dark'?' selected':''}>Koyu</option><option value="light"${S.theme==='light'?' selected':''}>Açık</option></select>
-<label>Renk paleti</label><div class="pal">${Object.entries(PAL).map(([k,v])=>{const P=palOf(k,document.documentElement.dataset.t);return `<button class="sw ${S.pal===k?'on':''}" onclick="setPal('${k}')"><span class="dots"><i style="background:${P.bg}"></i><i style="background:${P.sf2}"></i><i style="background:${P.ac}"></i></span>${v.n}</button>`}).join('')}</div></div>
-<h2>Hatırlatıcılar</h2><div class="card" data-tour="pf-rem"><div class="row sp"><div><b>Program hatırlatıcıları</b><div class="mu">Ders ve çalışma saatinden önce bildirim</div></div><button class="sw2 ${S.rem.on?'on':''}" aria-label="Aç / kapat" onclick="remToggle(${!S.rem.on})"><i></i></button></div>
-${S.rem.on?`<label>Kaç dakika önce?</label><select onchange="remSet('lead',+this.value)">${[5,10,15,30,60].map(v=>`<option value="${v}"${(+S.rem.lead||10)===v?' selected':''}>${v} dakika</option>`).join('')}</select>
-<div class="row" style="align-items:flex-start;margin-top:16px"><input type="checkbox" style="width:20px;min-height:0;margin-top:3px" ${S.rem.motiv!==false?'checked':''} onchange="remSet('motiv',this.checked)"><span style="font-size:14px">Teşvik edici kısa mesajlar ekle</span></div>
-<button class="btn g s" style="margin-top:16px" onclick="remTest()">Test bildirimi gönder</button>`:''}
-<p class="mu" style="margin-top:14px">${isNat()?'Bildirimler uygulama kapalıyken de gelir.':'Bu sürümde bildirimler yalnızca uygulama açıkken ya da arka planda canlıyken gelir. Uygulama kapalıyken bildirim yerel uygulama sürümünde çalışacak.'}</p></div>
-<h2>Rehber</h2><div class="card" data-tour="pf-guide"><p class="mu">Uygulamayı baştan ya da istediğin bölümden yeniden gez.</p><button class="btn" style="width:100%;margin:10px 0 6px" onclick="tour(0)">Rehberi baştan başlat</button><div>${gd.map(g=>`<button class="chip" style="border:0;color:var(--tx);cursor:pointer;font:inherit;font-size:13px" onclick="tour(${g[1]})">${g[0]}</button>`).join('')}</div></div>
-<h2>Geri bildirim ve iletişim</h2><div class="card" data-tour="pf-feedback"><p class="mu">Şikayet, öneri ya da hata bildirimlerin için.</p><button class="btn" style="width:100%;margin-top:12px" onclick="fbOpen()">Geri bildirim gönder</button><p class="mu" style="margin-top:12px">Doğrudan yazmak istersen: <b style="color:var(--tx)">eraslaniskender2@gmail.com</b></p></div>
-<h2>Yedek ve veri</h2><div class="card" data-tour="pf-data"><p class="mu" style="margin-bottom:12px">Veriler yalnızca bu cihazın tarayıcısında saklanır. Tarayıcı verilerini temizlersen silinir; yedek almanı öneririm. Hızlı yedek notları içermez; notlar ve fotoğraflar için Tam yedek'i kullan.</p>
-<label style="display:flex;gap:8px;align-items:center;margin:0 0 10px;color:var(--tx)"><input type="checkbox" style="width:auto" ${S.auto?'checked':''} onchange="S.auto=this.checked;save()">Uygulamadan çıkınca otomatik yedek al</label><p class="mu" id="ps" style="margin-bottom:12px"></p>
-<div class="row wr"><button class="btn g s" onclick="bk()">${ic('down')}Hızlı yedek</button><button class="btn g s" onclick="bkFull()">${ic('down')}Tam yedek</button><button class="btn g s" onclick="rsForm()">${ic('up')}Yedekten yükle</button><button class="btn g s" onclick="snapForm()">Otomatik yedekler</button></div></div>
-<h2>Tehlikeli alan</h2><div class="card r"><p class="mu">Tüm denemeler, programlar ve profil kalıcı olarak silinir.</p><button class="btn d" style="margin-top:6px" onclick="rs()">${ic('trash')}Tüm verileri sil</button></div>`}
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 6px">${st(ex.length,'deneme')}${st(best,'en iyi net')}${st(lb,'son yedek')}</div>
+${sec('bil','user','Bilgilerim','Ad, e-posta, sınav ve bölüm',`<label style="margin-top:0">Ad</label><input id="pn" value="${esc(u.name)}"><label>E-posta (yalnızca iletişim için)</label><input id="pm" type="email" inputmode="email" value="${esc(u.email||'')}"><label>Hedef sınav</label><select id="pe" onchange="fillTr('pe','pt')">${opts(EXAMS,u.exam)}</select><label>Bölüm / alan</label><select id="pt">${opts(trk(u.exam),u.track)}</select><button class="btn" style="width:100%;margin-top:16px" onclick="pSave()">Kaydet</button>`)}
+${sec('gor','target','Görünüm','Mod ve renk paleti',`<label style="margin-top:0">Mod</label><select onchange="S.theme=this.value;save();render()"><option value="auto"${S.theme==='auto'?' selected':''}>Otomatik (cihaz ayarı)</option><option value="dark"${S.theme==='dark'?' selected':''}>Koyu</option><option value="light"${S.theme==='light'?' selected':''}>Açık</option></select><label>Renk paleti</label><div class="pal">${pal}</div>`,'pf-theme')}
+${sec('hat','clock','Hatırlatıcılar',S.rem.on?'Açık':'Kapalı',`<div class="row sp"><div><b>Program hatırlatıcıları</b><div class="mu">Ders ve çalışma saatinden önce bildirim</div></div><button class="sw2 ${S.rem.on?'on':''}" aria-label="Aç / kapat" onclick="remToggle(${!S.rem.on})"><i></i></button></div>
+${S.rem.on?`<label>Kaç dakika önce?</label><select onchange="remSet('lead',+this.value)">${[5,10,15,30,60].map(v=>`<option value="${v}"${(+S.rem.lead||10)===v?' selected':''}>${v} dakika</option>`).join('')}</select><div class="row" style="align-items:flex-start;margin-top:16px"><input type="checkbox" style="width:20px;min-height:0;margin-top:3px" ${S.rem.motiv!==false?'checked':''} onchange="remSet('motiv',this.checked)"><span style="font-size:14px">Teşvik edici kısa mesajlar ekle</span></div><button class="btn g s" style="margin-top:16px" onclick="remTest()">Test bildirimi gönder</button>`:''}
+<p class="mu" style="margin-top:14px">${isNat()?'Bildirimler uygulama kapalıyken de gelir.':'Bu sürümde bildirimler yalnızca uygulama açıkken ya da arka planda canlıyken gelir.'}</p>`,'pf-rem')}
+${sec('reh','book','Rehber','Uygulamayı gez',`<p class="mu">Uygulamayı baştan ya da istediğin bölümden yeniden gez.</p><button class="btn" style="width:100%;margin:10px 0 6px" onclick="tour(0)">Rehberi baştan başlat</button><div>${gd.map(g=>`<button class="chip" style="border:0;color:var(--tx);cursor:pointer;font:inherit;font-size:13px" onclick="tour(${g[1]})">${g[0]}</button>`).join('')}</div>`,'pf-guide')}
+${sec('geri','note','Geri bildirim ve destek','Şikayet ve öneri',`<p class="mu">Şikayetlerine 3 saat içinde ilgilenilmesi hedeflenir; gerekirse sana geri dönülür.</p><div class="row" style="gap:10px;margin-top:12px"><button class="btn g" style="flex:1" onclick="faqOpen()">Sık sorulan sorular</button><button class="btn" style="flex:1" onclick="fbOpen()">Geri bildirim</button></div><p class="mu" style="margin-top:12px">Doğrudan yazmak istersen: <b style="color:var(--tx)">eraslaniskender2@gmail.com</b></p>`,'pf-feedback')}
+${sec('yed','down','Yedek ve veri','Yedek al, geri yükle',`<p class="mu" style="margin-bottom:12px">Veriler yalnızca bu cihazda saklanır. Hızlı yedek notları içermez; notlar ve fotoğraflar için Tam yedek'i kullan.</p><label style="display:flex;gap:8px;align-items:center;margin:0 0 10px;color:var(--tx)"><input type="checkbox" style="width:auto" ${S.auto?'checked':''} onchange="S.auto=this.checked;save()">Uygulamadan çıkınca otomatik yedek al</label><p class="mu" id="ps" style="margin-bottom:12px"></p><div class="row wr"><button class="btn g s" onclick="bk()">${ic('down')}Hızlı yedek</button><button class="btn g s" onclick="bkFull()">${ic('down')}Tam yedek</button><button class="btn g s" onclick="rsForm()">${ic('up')}Yedekten yükle</button><button class="btn g s" onclick="snapForm()">Otomatik yedekler</button></div>`,'pf-data')}
+${sec('hak','book','Hakkında','Sürüm '+VER,`<p style="margin:0"><b>Sınav Takip</b> · Eraslan Education</p><p class="mu" style="margin:6px 0 12px">Sürüm ${VER}</p><div class="row wr"><button class="btn g s" onclick="showNews(true)">Yenilikleri gör</button><button class="btn g s" onclick="privacy()">Gizlilik bilgilendirmesi</button></div>`)}
+${sec('teh','trash','Tehlikeli alan','Tüm verileri sil',`<p class="mu">Tüm denemeler, programlar, notlar ve profil kalıcı olarak silinir.</p><button class="btn d" style="margin-top:6px" onclick="rs()">${ic('trash')}Tüm verileri sil</button>`)}`}
 /* ---------- geri bildirim ---------- */
-const MAIL='eraslaniskender2@gmail.com',VER='0.9.5';
+const MAIL='eraslaniskender2@gmail.com',VER='1.1.0';
 let fb={t:'Öneri'};
-function fbSync(){const m=$('#fm'),e=$('#fe'),d=$('#fd');if(m&&m.value!==undefined)fb.msg=m.value;if(e&&e.value!==undefined)fb.em=e.value;if(d&&d.checked!==undefined)fb.dev=d.checked}
-function fbOpen(){const u=S.user||{},em=fb.em!==undefined?fb.em:(u.email||'');
-modal(`<h1>Geri bildirim</h1><p class="mu" style="margin:6px 0 4px">Şikayetin 3 saat içinde ilgilenilecek, gerekirse sana geri dönüş yapılacak.</p>
-<label>Tür</label><div>${['Şikayet','Öneri','Hata bildirimi','Diğer'].map(t=>`<button class="chip" style="border:0;cursor:pointer;font:inherit;font-size:13px;${fb.t===t?'background:var(--ac);color:var(--acb)':'color:var(--tx)'}" onclick="fbSync();fb.t='${t}';fbOpen()">${t}</button>`).join('')}</div>
-<label>Mesajın</label><textarea id="fm" rows="6" maxlength="1500" placeholder="Ne yaşadın ya da ne önerirsin?">${esc(fb.msg||'')}</textarea>
+function faqList(q){const n=nz(q||''),L=FAQ.filter(f=>!n||nz(f.q+' '+f.a).includes(n)||f.k.some(w=>(' '+n).includes(' '+w)));
+return L.length?L.map(f=>`<details class="acc" style="border-radius:16px"><summary style="padding:14px 16px"><b style="flex:1">${esc(f.q)}</b><span class="chev">${ic('chevD',18)}</span></summary><div class="accb" style="padding:0 16px 16px"><p class="mu" style="font-size:15px">${esc(f.a)}</p>${f.g?`<button class="btn s g" style="margin-top:10px" onclick="closeM();go('${f.g}')">${f.gl||'Git'}</button>`:''}</div></details>`).join(''):'<div class="card mu">Eşleşen soru bulunamadı. Geri bildirim formundan sorabilirsin.</div>'}
+function faqOpen(q){modal(`<div class="row sp"><h1>Sık sorulan sorular</h1><button class="btn d" onclick="closeM()">Kapat</button></div><input id="fq" placeholder="Soru ara" value="${esc(q||'')}" oninput="$('#fql').innerHTML=faqList(this.value)" style="margin-top:10px"><div id="fql" style="margin-top:12px">${faqList(q)}</div><button class="btn" style="width:100%;margin-top:14px" onclick="fbOpen()">Cevabı bulamadım, soru sor</button>`)}
+function fbSync(){const m=$('#fm'),e=$('#fe'),d=$('#fd'),sc=$('#fs');if(m&&m.value!==undefined)fb.msg=m.value;if(e&&e.value!==undefined)fb.em=e.value;if(d&&d.checked!==undefined)fb.dev=d.checked;if(sc&&sc.value!==undefined)fb.scr=sc.value}
+function fbSug(){fbSync();const q=nz(fb.msg||''),el=$('#fsg');if(!el)return;const hit=q.length>10?FAQ.map(f=>({f,s:f.k.filter(w=>(' '+q).includes(' '+w)).length})).filter(x=>x.s>0).sort((a,b)=>b.s-a.s).slice(0,2):[];
+el.innerHTML=hit.length?`<div class="mu" style="margin-top:10px">Cevap burada olabilir:</div>`+hit.map(x=>`<button class="qr" style="margin:6px 6px 0 0;white-space:normal;text-align:left" data-q="${esc(x.f.q)}" onclick="faqOpen(this.dataset.q)">${esc(x.f.q)}</button>`).join(''):''}
+function fbOpen(){const u=S.user||{},em=fb.em!==undefined?fb.em:(u.email||''),ch=(arr,cur,set)=>arr.map(t=>`<button class="chip" style="border:0;cursor:pointer;font:inherit;font-size:13px;${cur===t?'background:var(--ac);color:var(--acb)':'color:var(--tx)'}" onclick="fbSync();${set}='${t}';fbOpen()">${t}</button>`).join('');
+modal(`<div class="row sp"><h1>Geri bildirim</h1><button class="btn d" onclick="closeM()">Kapat</button></div><p class="mu" style="margin:6px 0 4px">Şikayetin 3 saat içinde ilgilenilecek, gerekirse sana geri dönüş yapılacak.</p>
+<label>Tür</label><div>${ch(['Şikayet','Öneri','Hata bildirimi','Soru','Diğer'],fb.t,'fb.t')}</div>
+<label>Hangi ekranda?</label><select id="fs">${opts(['Genel','Ana sayfa','Denemeler','Program','Süre','Notlar','Koç','Profil'],fb.scr||'Genel')}</select>
+<label>Mesajın</label><textarea id="fm" rows="6" maxlength="1500" placeholder="Ne yaşadın ya da ne önerirsin? Hata ise ne yaptığını ve ne olduğunu yaz." oninput="fbSug()">${esc(fb.msg||'')}</textarea><div id="fsg"></div>
+<label>Uygulamadan memnuniyetin <span class="mu">(isteğe bağlı)</span></label><div>${ch(['1','2','3','4','5'],fb.rate,'fb.rate')}</div>
 <label>Cevap için e-postan</label><input id="fe" type="email" inputmode="email" value="${esc(em)}">
 <div class="row" style="align-items:flex-start;margin-top:14px"><input type="checkbox" id="fd" style="width:20px;min-height:0;margin-top:3px" ${fb.dev===false?'':'checked'}><span style="font-size:14px">Uygulama sürümü ve cihaz bilgisini ekle <span class="mu">(hatayı çözmeye yardım eder)</span></span></div>
 <div class="card" style="margin-top:14px"><p class="mu">Gönder'e basınca mesajın e-posta uygulamanda hazır açılır, göndermek için senin onayın gerekir. Cevap e-postası spam klasörüne düşebilir, onu da kontrol et.</p></div>
 <div class="err" id="fer"></div>
-<div class="row"><button class="btn g" style="flex:1" onclick="closeM()">Vazgeç</button><button class="btn g" style="flex:1" onclick="fbCopy()">Kopyala</button><button class="btn" style="flex:1" onclick="fbGo()">Gönder</button></div>`)}
+<div class="row stk"><button class="btn g" style="flex:1" onclick="closeM()">Vazgeç</button><button class="btn g" style="flex:1" onclick="fbCopy()">Kopyala</button><button class="btn" style="flex:1" onclick="fbGo()">Gönder</button></div>`);fbSug()}
 function fbCheck(){const m=(fb.msg||'').trim(),e=(fb.em||'').trim();return m.length<10?'Mesajın en az 10 karakter olsun.':!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)?'Cevap alabilmem için geçerli bir e-posta yaz.':''}
 function fbText(){const u=S.user||{};const sub=`[Sınav Takip] ${fb.t} - ${u.name||'Kullanıcı'}`;
-let body=`Tür: ${fb.t}\nAd: ${u.name||''}\nCevap e-postası: ${(fb.em||'').trim()}\nSınav / bölüm: ${u.exam||''} / ${u.track||''}\n\nMesaj:\n${(fb.msg||'').trim()}\n`;
+let body=`Tür: ${fb.t}\nEkran: ${fb.scr||'Genel'}\nAd: ${u.name||''}\nCevap e-postası: ${(fb.em||'').trim()}\nSınav / bölüm: ${u.exam||''} / ${u.track||''}\n${fb.rate?'Memnuniyet: '+fb.rate+' / 5\n':''}\nMesaj:\n${(fb.msg||'').trim()}\n`;
 if(fb.dev!==false)body+=`\n--\nUygulama: Sınav Takip v${VER}\nCihaz: ${(navigator.userAgent||'').slice(0,160)}\n`;return{sub,body}}
 function fbGo(){fbSync();const er=fbCheck();if(er){$('#fer').textContent=er;return}const t=fbText();
 const a=document.createElement('a');a.href=`mailto:${MAIL}?subject=${encodeURIComponent(t.sub)}&body=${encodeURIComponent(t.body)}`;document.body.appendChild(a);a.click();a.remove();toast('E-posta uygulaman açılıyor…')}
@@ -603,7 +694,7 @@ const TOUR=[
 ['exams','[data-tour=ex-goal]','Net hedeflerin','Ders başına hedef net belirle. Netin hedefin altında kalırsa veya üst üste düşerse uygulama seni uyarır.'],
 ['exams','[data-tour=ex-chart]','Gelişim grafiği','Netini, doğru ve yanlış sayılarını grafikte izle. Üstteki ders düğmeleriyle dersi, sağdaki düğmelerle Net veya Doğru/Yanlış görünümünü seç. Kesikli çizgi hedefindir.'],
 ['sched','[data-tour=sc-tabs]','İki ayrı program','Ders programı okul, dershane ve etütler içindir. Çalışma programı kütüphane veya evdeki kendi çalışma saatlerin içindir.'],
-['sched','[data-tour=sc-gen]','Tabloyu uygulama hazırlasın','Başlangıç ve bitiş saatini, ders süresini yaz; haftalık tablo otomatik oluşsun. Sonra hücrelere dokunarak dersleri değiştirebilirsin.'],
+['sched','[data-tour=sc-gen]','Otomatik program','Dersleri, başlangıç ve bitiş saatini, ders ve ara süresini seç; dinlenme günün hariç 6 gün için 5 farklı program önerilir. Beğendiğini seçersin, sonra hücrelere dokunarak değiştirebilirsin.'],
 ['sched','[data-tour=sc-rest]','Dinlenme günü','Haftada bir gün dinlenme zorunlu. Günü değiştirebilirsin ama kaldıramazsın; o gün tabloda çizgili ve kilitli görünür.'],
 ['notes','[data-tour=nt-add]','Not defteri','Yazı ve fotoğraf notları ekle. Kamerayla çek ya da galeriden seç; fotoğraflar küçültülüp cihazında saklanır, en fazla 100 fotoğraf.'],
 ['study','[data-tour=st-top]','Koç','Koç ile sohbet edersin. Analiz yap de ya da hangi derse ağırlık vermen gerektiğini, netinin düşüp düşmediğini, hedefine uzaklığını sor. Hesaplama telefonunda yapılır.'],
@@ -617,7 +708,7 @@ const TOUR=[
 let _ti=0,_ton=false;
 function tour(i){_ton=true;_ti=i;closeM();tstep()}
 function tstep(){const s=TOUR[_ti];if(!s)return tend();tab=s[0];render();scrollTo(0,0);
-setTimeout(()=>{const el=$(s[1]);if(!el){_ti++;return tstep()}el.scrollIntoView({block:'center'});setTimeout(()=>tdraw(s),120)},60)}
+setTimeout(()=>{const el=$(s[1]);if(!el){_ti++;return tstep()}if(el.tagName==='DETAILS')el.open=true;el.scrollIntoView({block:'center'});setTimeout(()=>tdraw(s),120)},60)}
 function tdraw(s){let o=$('#tour');if(!o){o=document.createElement('div');o.id='tour';document.body.appendChild(o)}const last=_ti===TOUR.length-1;
 o.innerHTML=`<div class="tx"></div><div class="th" id="th"></div><div class="tp" id="tp"><div class="mu">${_ti+1} / ${TOUR.length}</div><h2 style="margin:4px 0 6px">${s[2]}</h2><p>${s[3]}</p><div class="row sp" style="margin-top:14px"><button class="btn d" onclick="tend()">Rehberi geç</button><div class="row">${_ti?'<button class="btn g s" onclick="_ti--;tstep()">Geri</button>':''}<button class="btn" onclick="tnext()">${last?'Bitir':'Devam et'}</button></div></div></div>`;tpos()}
 function tpos(){const s=TOUR[_ti];if(!_ton||!s)return;const el=$(s[1]),h=$('#th'),p=$('#tp');if(!el||!h||!p)return;const r=el.getBoundingClientRect(),d=6;
@@ -657,8 +748,181 @@ try{const r=await F.readFile({path:'veri.json',directory:'DATA',encoding:'utf8'}
 async function shareFile(name,text){try{const F=NP('Filesystem'),Sh=NP('Share');await F.writeFile({path:name,data:text,directory:'CACHE',encoding:'utf8'});const u=await F.getUri({path:name,directory:'CACHE'});await Sh.share({title:'Sınav Takip yedeği',files:[u.uri],dialogTitle:'Yedeği kaydet veya gönder'})}catch(e){toast('Paylaşılamadı.')}}
 if(isNat()){mirrorRestore();
 document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href^="http"]'),B=NP('Browser');if(a&&B){e.preventDefault();B.open({url:a.href})}});
-const A=NP('App');if(A)A.addListener('backButton',()=>{if(document.querySelector('.ov')){closeM();return}if(_ton){tend();return}if(tab!=='home'){go('home');return}A.exitApp()});
+const A=NP('App');if(A)A.addListener('backButton',()=>{if($$('pdfv')){pdfClose();return}if(document.querySelector('.ov')){closeM();return}if(_ton){tend();return}if(tab!=='home'){go('home');return}A.exitApp()});
 const L=LN();if(L)L.createChannel({id:'program',name:'Program hatırlatıcıları',description:'Ders ve çalışma saati bildirimleri',importance:4,visibility:1,vibration:true}).catch(()=>{})}
 addEventListener('resize',tpos);addEventListener('scroll',tpos,{passive:true});
+/* ---------- süre tutma ---------- */
+const fmtT=sec=>{sec=Math.max(0,Math.floor(sec));return String(Math.floor(sec/3600)).padStart(2,'0')+':'+String(Math.floor(sec%3600/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0')};
+const tEl=()=>{const T=S.timer||{acc:0,run:false,start:0};return T.acc+(T.run?(Date.now()-T.start)/1000:0)};
+const hm=sec=>{const m=Math.round(sec/60);return m>=60?Math.floor(m/60)+' sa '+(m%60)+' dk':m+' dk'};
+const dayStart=d=>{const x=new Date(d);x.setHours(0,0,0,0);return x.getTime()};
+function tStart(){const T=S.timer;if(T.run)return;T.start=Date.now();T.run=true;save();render()}
+function tPause(){const T=S.timer;if(!T.run)return;T.acc=tEl();T.run=false;save();render()}
+function tFinish(){const T=S.timer,sec=Math.round(tEl());T.run=false;T.acc=0;if(sec>=10){S.tlog.push({id:uid(),t:Date.now(),subj:T.subj||'Genel',sec});if(S.tlog.length>500)S.tlog=S.tlog.slice(-500);toast('Kaydedildi: '+Math.max(1,Math.round(sec/60))+' dk')}else toast('10 saniyeden kısa süre kaydedilmedi');save();render()}
+function tDel(id){S.tlog=S.tlog.filter(x=>x.id!==id);save();render()}
+function tStats(){const now=new Date(),t0=dayStart(now),w0=t0-((now.getDay()+6)%7)*864e5;let td=0,wk=0,all=0;const by={};S.tlog.forEach(x=>{all+=x.sec;if(x.t>=t0)td+=x.sec;if(x.t>=w0){wk+=x.sec;by[x.subj]=(by[x.subj]||0)+x.sec}});return{td,wk,all,by}}
+let tmT='sayac',hz={s:'',q:'',m:'',d:'',eq:'',em:'',res:''};
+function exDef(sj){const e=S.user.exam;if(e==='YKS'){if(/^AYT/.test(sj))return[160,180];if(/^YDT/.test(sj))return[80,120];return[120,135]}return ({KPSS:[120,120],DGS:[100,150],ALES:[100,150],LGS:[90,155],'YDS / YÖKDİL':[80,180]})[e]||[100,120]}
+const vOf=r=>r<.7?'Çok hızlı':r<.95?'Hızlı':r<=1.15?'İdeal':r<=1.5?'Yavaş':'Çok yavaş';
+function timev(){const seg=`<div class="seg"><button class="${tmT==='sayac'?'on':''}" onclick="tmT='sayac';render()">Sayaç</button><button class="${tmT==='hiz'?'on':''}" onclick="tmT='hiz';render()">Hız analizi</button></div>`;return `<h1>Süre</h1>${seg}${tmT==='hiz'?hizv():sayacv()}`}
+function hizv(){const sb=subs().map(a=>a[0]);if(!hz.s||!sb.includes(hz.s))hz.s=sb[0]||'';const df=exDef(hz.s),eq=hz.eq||df[0],em=hz.em||df[1],hist=S.plog.slice(-5).reverse();
+let tr='';if(S.plog.length>=3){const l=S.plog[S.plog.length-1].pace,av=mean(S.plog.slice(-5,-1).map(x=>x.pace));tr=l<av*.9?'Son analizde önceki ortalamana göre hızlandın.':l>av*1.1?'Son analizde önceki ortalamana göre yavaşladın.':'Hızın önceki analizlerle benzer.'}
+return `<p class="mu">Çözdüğün soru sayısını ve harcadığın süreyi yaz; sınav formatındaki ideal hızla karşılaştırayım.</p><div class="card"><label style="margin-top:0">Ders</label><select onchange="hz.s=this.value;hz.eq='';hz.em='';render()">${sb.map(n=>`<option${hz.s===n?' selected':''}>${esc(n)}</option>`).join('')}</select>
+<div class="g2"><div><label>Çözülen soru</label><input type="number" inputmode="numeric" min="1" value="${esc(hz.q)}" oninput="hz.q=this.value"></div><div><label>Harcanan süre (dk)</label><input type="number" inputmode="decimal" step="0.5" min="0.5" value="${esc(hz.m)}" oninput="hz.m=this.value"></div></div>
+<button class="btn d" style="margin-top:4px" onclick="hzFromTimer()">Süreyi sayaçtan al</button>
+<label>Doğru sayısı <span class="mu">(isteğe bağlı)</span></label><input type="number" inputmode="numeric" min="0" value="${esc(hz.d)}" oninput="hz.d=this.value">
+<label>Sınav formatı <span class="mu">(genel varsayım; resmî kılavuza göre değiştirebilirsin)</span></label><div class="g2"><div><div class="mu">Toplam soru</div><input type="number" inputmode="numeric" value="${eq}" oninput="hz.eq=this.value"></div><div><div class="mu">Süre (dk)</div><input type="number" inputmode="numeric" value="${em}" oninput="hz.em=this.value"></div></div>
+<button class="btn" style="width:100%;margin-top:18px" onclick="hzGo()">Analiz et</button></div>
+${hz.res?`<div class="card hero">${hz.res}</div>`:''}
+${hist.length?`<h2>Önceki analizler</h2><div class="card" style="padding:6px 18px">${hist.map((x,i)=>`<div class="row sp" style="padding:12px 0;${i?'border-top:1px solid var(--bd)':''}"><div><b>${esc(x.subj)}</b><div class="mu">${new Date(x.t).toLocaleDateString('tr-TR',{day:'numeric',month:'short'})} · ${x.q} soru · ${r1(x.pace)} sn/soru</div></div><span class="chip" style="margin:0">${vOf(x.ratio)}</span></div>`).join('')}</div>${tr?`<p class="mu">${tr}</p>`:''}`:''}`}
+function hzFromTimer(){const e=tEl();let mn=0;if(e>=30)mn=e/60;else if(S.tlog.length)mn=S.tlog[S.tlog.length-1].sec/60;if(!mn){toast('Sayaçta süre yok.');return}hz.m=String(r1(mn));render()}
+function hzGo(){const q=+hz.q,mn=+hz.m,d=hz.d===''?null:+hz.d,df=exDef(hz.s),eq=+(hz.eq||df[0]),em=+(hz.em||df[1]);
+if(!(q>0)||!(mn>0)){toast('Çözülen soru ve süreyi yaz.');return}if(d!==null&&(d<0||d>q)){toast('Doğru sayısı çözülen sorudan fazla olamaz.');return}if(!(eq>0)||!(em>0)){toast('Sınav formatını yaz.');return}
+const pace=mn*60/q,ideal=em*60/eq,ratio=pace/ideal,proj=eq*pace/60,diff=proj-em,L=[`Soru başına ${r1(pace)} sn harcıyorsun; sınav formatında soru başına ideal süre yaklaşık ${r1(ideal)} sn.`,`Bu hızla ${eq} soruyu ${r1(proj)} dakikada çözersin; sınav süresi ${em} dakika (${diff>0?r1(diff)+' dk fazla':diff<0?r1(-diff)+' dk pay kalır':'tam sınırda'}).`];
+if(d!==null){const acc=d/q;L.push(`Doğruluk: ${q} sorudan ${d} doğru (%${Math.round(acc*100)}).`);
+if(ratio<.8&&acc<.7)L.push('Hızlı ama doğruluk düşük: acele hata yaptırıyor olabilir; hızı biraz düşürüp doğruluğa öncelik ver.');
+else if(ratio>1.15&&acc>=.8)L.push('Doğruluğun yüksek ama yavaşsın: zaman sınırlı soru çözümüyle hız kazanabilirsin.');
+else if(ratio>1.15&&acc<.7)L.push('Hem yavaş hem doğruluk düşük: konu eksiği olasılığı yüksek; önce konu çalışması öneririm.');
+else if(ratio<=1.15&&acc>=.8)L.push('Hız ve doğruluk dengeli görünüyor.')}
+L.push('Not: Karşılaştırma tüm sınavın ortalamasına göredir; matematik gibi dersler doğal olarak daha uzun sürebilir.');
+S.plog.push({id:uid(),t:Date.now(),subj:hz.s,q,min:mn,d,pace,ratio,eq,em});if(S.plog.length>300)S.plog=S.plog.slice(-300);save();
+hz.res=`<div class="row sp"><b>Sonuç</b><span class="chip" style="margin:0">${vOf(ratio)}</span></div>${ul(L)}`;render()}
+/* ---------- sınav (PDF) ---------- */
+const FOLDER='Sinav.takip.deneme';
+const exRank=n=>{const x=nz(n);return /(^|[^a-z])tyt/.test(x)?0:/(^|[^a-z])ayt/.test(x)?1:/(^|[^a-z])ydt/.test(x)?2:3};
+const exSort=a=>a.slice().sort((p,q)=>exRank(p.name)-exRank(q.name)||p.name.localeCompare(q.name,'tr',{numeric:true,sensitivity:'base'}));
+let SAok=null;
+const SA=()=>{try{return (Capacitor.Plugins&&Capacitor.Plugins.StorageAccess)||Capacitor.registerPlugin('StorageAccess')}catch(e){return null}};
+async function saStatus(){if(!isNat())return null;try{const r=await SA().status();return !!r.granted}catch(e){return null}}
+let exMsg='',_exBusy=false;
+const exRef=()=>{if(tab==='exam'&&!document.querySelector('.md'))render()};
+async function exSync(manual){if(!isNat()||_exBusy)return;_exBusy=true;exMsg='Klasör aranıyor…';exRef();
+try{let path=S.exm.folder,r=null;
+if(path&&!manual){try{r=await SA().sync({path})}catch(e){path=''}}
+if(!r){let f=await SA().find({name:FOLDER});if(!f.found)f=await SA().find({name:'Sınav.takip.deneme'});path=f.found?f.path:'';
+if(!path){S.exm.folder='';exMsg='“'+FOLDER+'” klasörü bulunamadı. Telefonda bu adla bir klasör oluşturup PDF dosyalarını içine koy, sonra Klasörü tara’ya bas.';save();return}
+exMsg='PDF dosyaları uygulamaya alınıyor…';exRef();r=await SA().sync({path})}
+S.exm.folder=path;S.exm.files=(r.files||[]).map(f=>({name:f.name,rel:f.rel,size:f.size,mtime:f.mtime,app:f.app}));S.exm.last=Date.now();
+const n=S.exm.files.length;exMsg=n?`${n} PDF hazır`+(r.added?`, ${r.added} yeni ya da güncellenen`:'')+(r.removed?`, ${r.removed} kaldırıldı`:''):'Klasör bulundu ama içinde PDF yok.';save()}
+catch(e){exMsg='Klasör okunamadı. Dosya erişim iznini kontrol et.'}
+finally{_exBusy=false;exRef()}}
+async function saRefresh(){SAok=await saStatus();if(SAok===true)exSync(false);else exRef()}
+async function saAsk(){try{await SA().request();toast('Açılan sayfada Sınav Takip için izni aç, sonra uygulamaya dön.')}catch(e){toast('İzin sayfası açılamadı.')}}
+async function askStorage(){if(!isNat()||!S.user||S.exm.asked)return;const g=await saStatus();SAok=g;if(g===true){exSync(false);return}if(g!==false)return;S.exm.asked=true;save();
+modal(`<h1>Sınav klasörü için dosya erişimi</h1><p class="mu" style="margin:8px 0 14px">Telefonundaki <b>${FOLDER}</b> klasörünü bulup içindeki sınav PDF'lerini uygulamaya almak için dosya erişim izni gerekiyor. Açılan ayar sayfasında <b>Sınav Takip</b> için "Tüm dosyalara erişime izin ver" anahtarını aç, sonra uygulamaya dön.</p><div class="row"><button class="btn g" style="flex:1" onclick="closeM()">Sonra</button><button class="btn" style="flex:1" onclick="closeM();saAsk()">İzin ver</button></div>`)}
+/* ---------- PDF görüntüleyici ---------- */
+let V={doc:null,pages:[],gen:0,f:null,mode:'orta',t:0};
+const PM=[['kucuk','Küçük'],['orta','Orta'],['buyuk','Büyük'],['orijinal','Orijinal']];
+const pdfScaleFor=(mode,pw,cw)=>{const fit=Math.max(.2,(cw-20)/pw);return mode==='kucuk'?fit*.7:mode==='buyuk'?fit*1.6:mode==='orijinal'?96/72:fit};
+const $$=id=>document.getElementById(id);
+function loadPdfJs(){return new Promise((ok,no)=>{if(window.pdfjsLib)return ok();const sc=document.createElement('script');sc.src='pdf.min.js';sc.onload=()=>{try{pdfjsLib.GlobalWorkerOptions.workerSrc='pdf.worker.min.js';ok()}catch(e){no(e)}};sc.onerror=()=>no(new Error('PDF görüntüleyici dosyası bulunamadı.'));document.head.appendChild(sc)})}
+function pdfRelease(p){if(p.done||p.canvas.width){p.canvas.width=0;p.canvas.height=0}p.done=false}
+async function pdfRender(p){if(p.busy||p.done)return;p.busy=true;const g=V.gen;try{const pg=await V.doc.getPage(p.n),dpr=Math.min(window.devicePixelRatio||1,1.5),vp=pg.getViewport({scale:p.sc*dpr}),c=p.canvas;
+c.width=Math.floor(vp.width);c.height=Math.floor(vp.height);c.style.width=Math.floor(vp.width/dpr)+'px';c.style.height=Math.floor(vp.height/dpr)+'px';
+await pg.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;if(g===V.gen)p.done=true;else pdfRelease(p)}catch(e){}finally{p.busy=false}}
+function pdfTick(){if(!V.doc)return;const vh=innerHeight,vis=V.pages.filter(p=>!p.hidden);let cur=0;
+vis.forEach((p,i)=>{const r=p.w.getBoundingClientRect();if(r.bottom>-1200&&r.top<vh+1200)pdfRender(p);else pdfRelease(p);if(!cur&&r.bottom>vh*.4)cur=i+1});
+const e=$$('pdfp');if(e)e.textContent='Sayfa '+(cur||vis.length)+' / '+vis.length}
+function pdfLayout(){const cw=$$('pdfc').clientWidth||innerWidth;V.gen++;V.pages.forEach(p=>{p.sc=pdfScaleFor(V.mode,p.pw,cw);p.w.style.width=Math.round(p.pw*p.sc)+'px';p.w.style.height=Math.round(p.ph*p.sc)+'px';p.w.style.display=p.hidden?'none':'';pdfRelease(p)});pdfTick()}
+function pdfMode(m){const c=$$('pdfc'),ratio=c.scrollHeight?c.scrollTop/c.scrollHeight:0;V.mode=m;S.exm.mode=m;save();
+document.querySelectorAll('#pdfm button').forEach(b=>b.classList&&b.classList[b.dataset.m===m?'add':'remove']('on'));pdfLayout();c.scrollTop=ratio*c.scrollHeight}
+/* ---------- cevap anahtarı + cevap kâğıdı ---------- */
+const keyRe=()=>/(?:^|[^0-9])(\d{1,3})\s*[.\-–—:)\]]?\s*([A-E])(?![A-Za-z0-9ÇĞİÖŞÜçğıöşü])/g;
+function parseKeyText(txt){const re=keyRe(),secs=[];let cur=null,x;
+while((x=re.exec(txt))){const n=+x[1],l=x[2];if(!n)continue;if(!cur||n<=cur.last){cur={map:{},last:0};secs.push(cur)}cur.map[n]=l;cur.last=n}
+return secs.map(c=>{const mx=Math.max(...Object.keys(c.map).map(Number));return Array.from({length:mx},(_,i)=>c.map[i+1]||'')}).filter(a=>a.filter(Boolean).length>=3)}
+async function pdfKey(f){const c=S.exm.key[f.rel];if(c&&c.m===f.mtime&&c.sec&&(c.sec.length||c.manual))return c;
+const N=V.doc.numPages,parts=[],pages=[];for(let n=Math.max(1,N-7);n<=N;n++){const pg=await V.doc.getPage(n),tc=await pg.getTextContent(),txt=tc.items.map(i=>i.str).join(' '),cnt=(txt.match(keyRe())||[]).length;if(cnt>=10&&cnt*5/txt.length>=.25){parts.push(txt);pages.push(n)}}
+const k={m:f.mtime,sec:parseKeyText(parts.join(' \n ')),pages};S.exm.key[f.rel]=k;save();return k}
+async function pdfKeyInit(){const doc=V.doc;try{const k=await pdfKey(V.f);if(V.doc!==doc)return;V.key=k}catch(e){V.key={sec:[],pages:[]}}const pg=S.exm.prog[V.f.rel];V.hideKey=!(pg&&pg.done);keyApply()}
+function keyApply(){const k=V.key;V.pages.forEach(p=>{p.hidden=!!(V.hideKey&&k&&k.pages&&k.pages.includes(p.n))});pdfLayout()}
+function keyHide(b){V.hideKey=!!b;keyApply()}
+const progOf=()=>S.exm.prog[V.f.rel]||(S.exm.prog[V.f.rel]={a:[]});
+function sheetToggle(){const o=$$('pdfs');if(o){o.remove();return}const d=document.createElement('div');d.id='pdfs';$$('pdfv').appendChild(d);sheetRender()}
+const exDur=f=>exRank(f.name)===0?135:exRank(f.name)===1?180:120;
+const pTime2=pr=>(pr.acc||0)+(pr.run?(Date.now()-pr.start)/1000:0);
+const pRemain=pr=>(pr.dur||exDur(V.f))*60-pTime2(pr);
+function secNames(f,k){const n=k.sec.length,r=exRank(f.name),tyt=TYT.map(a=>a[0].replace(/^TYT /,'')),ayt=(YA[S.user.track]||[]).map(a=>a[0].replace(/^AYT /,''));
+if(r===0&&n===4)return tyt;if(r===1&&n>0&&n===ayt.length)return ayt;return k.sec.map((_,i)=>'Bölüm '+(i+1))}
+function sheetScore(k,pr){let g=0;const secs=k.sec.map(a=>{let d=0,y=0,b=0,u=0;const wrong=[],blank=[];a.forEach((kl,qi)=>{const an=pr.a[g++]||'';if(!an){b++;blank.push(qi+1)}else if(!kl)u++;else if(an===kl)d++;else{y++;wrong.push(qi+1)}});return{n:a.length,d,y,b,u,net:Math.round((d-y/4)*100)/100,wrong,blank}});
+const t=secs.reduce((o,x)=>({d:o.d+x.d,y:o.y+x.y,b:o.b+x.b,u:o.u+x.u}),{d:0,y:0,b:0,u:0});return{secs,...t,net:Math.round((t.d-t.y/4)*100)/100}}
+function pStart(){const pr=progOf();if(pr.run||pr.done)return;pr.start=Date.now();pr.run=true;save();sheetRender()}
+function pPause(){const pr=progOf();if(!pr.run)return;pr.acc=pTime2(pr);pr.run=false;save();sheetRender()}
+function pDur(v){const pr=progOf();pr.dur=Math.max(1,Math.min(600,+v||exDur(V.f)));save();pdfTimerTick()}
+function pdfTimerTick(){if(!V.f||!V.doc)return;const pr=S.exm.prog[V.f.rel];if(!pr||pr.done)return;const e=$$('pdft');if(e)e.textContent=fmtT(Math.max(0,pRemain(pr)));if(pr.run&&pRemain(pr)<=0){pr.acc=pTime2(pr);pr.run=false;save();toast('Süre doldu');sheetRender()}}
+function exSubjNames(f,k){const n=k.sec.length,r=exRank(f.name),u=S.user;
+if(u.exam==='YKS'){if(r===0&&n===4)return TYT.map(a=>a[0]);const ay=YA[u.track]||[];if(r===1&&n===ay.length)return ay.map(a=>a[0])}
+const sb=subs().map(a=>a[0]);return(r>1&&n===sb.length)?sb:null}
+function sheetAddExam(){const pr=progOf(),r=pr.res;if(!r)return;if(pr.added&&S.exams.some(e=>e.id===pr.added)){toast("Bu sınav zaten Denemelerim'de.");return}
+const nm=exSubjNames(V.f,V.key),res={};r.secs.forEach((x,i)=>{res[nm?nm[i]:'Bölüm '+(i+1)]={d:x.d,y:x.y}});
+const id=uid();S.exams.push({id,name:V.f.name.replace(/\.pdf$/i,''),date:new Date().toISOString().slice(0,10),res,wrong:{}});pr.added=id;save();
+toast(nm?'Denemelerime eklendi':'Eklendi; dersler eşleşmediği için bölüm olarak yazıldı');sheetRender()}
+const exAddBtn=()=>{const pr=progOf();return (pr.added&&S.exams.some(e=>e.id===pr.added))?'<div class="card mu" style="margin:8px 0;text-align:center">Denemelerime eklendi ✓</div>':'<button class="btn" style="width:100%;margin:8px 0" onclick="sheetAddExam()">Denemelerime ekle</button>'};
+function sheetKeyEdit(){V.setup=true;sheetRender()}
+function sheetFinish(){const pr=progOf(),k=V.key;if(!k.sec.some(a=>a.some(Boolean))){toast('Cevap anahtarı yok, net hesaplanamaz. Anahtarı ekle.');return}
+const tot=k.sec.reduce((a,x)=>a+x.length,0),bos=tot-pr.a.filter(Boolean).length;
+ask(`${bos} soru boş. Sınavı bitirip sonucu görmek istiyor musun?`,()=>{pr.acc=pTime2(pr);pr.run=false;pr.done=true;pr.res=sheetScore(k,pr);pr.res.t=Math.round(pr.acc);pr.res.at=Date.now();V.hideKey=false;save();keyApply();sheetRender()},'Evet, bitir')}
+function sheetRedo(){ask('Bu sınavın işaretlemeleri ve sonucu silinecek, süre sıfırlanacak.',()=>{const pr=progOf();pr.a=[];pr.acc=0;pr.run=false;pr.done=false;pr.res=null;V.hideKey=true;save();keyApply();sheetRender()},'Evet, yeniden çöz')}
+function sheetRender(){const d=$$('pdfs');if(!d)return;const k=V.key,pr=progOf();
+if(!k||!k.sec.length||V.setup){const tot=k?k.sec.reduce((a,x)=>a+x.length,0):0;d.innerHTML=`<div class="shh"><b>Cevap kâğıdı</b><button class="btn d" onclick="V.setup=false;${k&&k.sec.length?'sheetRender()':'sheetToggle()'}">${k&&k.sec.length?'Vazgeç':'Kapat'}</button></div><p class="mu">${V.setup?'Cevap anahtarını yapıştır; işaretlemelerin korunur. ':k?'Cevap anahtarı PDF’ten okunamadı (görsel olabilir). ':'Cevap anahtarı aranıyor… '}Soru sayısını yaz; istersen cevap anahtarını da yapıştır (örneğin 1A 2C 3B… ya da ABCDE…).</p><label>Soru sayısı</label><input id="shn" type="number" inputmode="numeric" placeholder="120" value="${tot||''}"><label>Cevap anahtarı (isteğe bağlı)</label><textarea id="shk" rows="3"></textarea><button class="btn" style="width:100%;margin-top:12px" onclick="sheetSetup()">Cevap kâğıdını aç</button>`;return}
+const tot=k.sec.reduce((a,x)=>a+x.length,0),mark=pr.a.filter(Boolean).length,names=secNames(V.f,k),done=!!pr.done;let g=0;
+const grid=k.sec.map((a,si)=>`<div class="mu" style="margin:14px 0 6px"><b>${esc(names[si])}</b> · ${a.length} soru</div>`+a.map((kl,qi)=>{const i=g++,cur=pr.a[i]||'';return `<div class="qrow" id="qr${i}"><span class="qn">${qi+1}</span>${'ABCDE'.split('').map(l=>`<button class="bub ${done?(l===kl?'ok':(cur===l?'bad':'')):(cur===l?'on':'')}" ${done?'disabled':''} onclick="sheetPick(${i},'${l}')">${l}</button>`).join('')}</div>`}).join('')).join('');
+if(done){const r=pr.res;d.innerHTML=`<div class="shh"><b>Sonuç</b><div class="row" style="gap:4px"><button class="btn d" onclick="sheetRedo()">Yeniden çöz</button><button class="btn d" onclick="sheetToggle()">Kapat</button></div></div>
+<div class="card hero" style="text-align:center;margin:6px 0"><div class="big" style="font-size:42px;margin:4px 0">${r.net}</div><div class="mu">toplam net · ${r.d} doğru · ${r.y} yanlış · ${r.b} boş</div><div class="mu">Süre: ${hm(r.t)} / ${pr.dur||exDur(V.f)} dk</div></div>
+${r.u?`<p class="mu">${r.u} soru için cevap anahtarı yok, hesaba katılmadı.</p>`:''}
+${r.secs.map((x,si)=>`<div class="card" style="margin:8px 0"><div class="row sp"><b>${esc(names[si])}</b><b>${x.net} net</b></div><div class="mu">${x.d} doğru · ${x.y} yanlış · ${x.b} boş</div>${x.wrong.length?`<div class="mu" style="margin-top:6px">Yanlış: ${x.wrong.join(', ')}</div>`:''}${x.blank.length?`<div class="mu">Boş: ${x.blank.join(', ')}</div>`:''}</div>`).join('')}
+${exAddBtn()}<h2 style="margin-top:18px">Cevap kâğıdı</h2><p class="mu">Yeşil doğru şık, kırmızı senin yanlış işaretin.</p>${grid}`;return}
+const rem=pRemain(pr),noKey=!k.sec.some(a=>a.some(Boolean));
+d.innerHTML=`<div class="shh"><div><b>Cevap kâğıdı</b><div class="mu" id="shc">${mark} / ${tot} işaretlendi</div></div><div class="row" style="gap:4px"><button class="btn d" onclick="sheetClear()">Temizle</button><button class="btn d" onclick="sheetToggle()">Kapat</button></div></div>
+<div class="card" style="margin:0 0 8px;padding:12px 14px"><div class="row sp"><div><div class="mu">Kalan süre</div><b id="pdft" style="font-size:24px;font-variant-numeric:tabular-nums">${fmtT(Math.max(0,rem))}</b></div><div class="row" style="gap:8px">${pr.run?`<button class="btn s" onclick="pPause()">Duraklat</button>`:`<button class="btn s" onclick="pStart()">${(pr.acc||0)>0?'Devam':'Başlat'}</button>`}</div></div>
+${pr.run?'':`<div class="row" style="margin-top:8px;gap:8px"><span class="mu">Süre (dk)</span><input type="number" inputmode="numeric" style="max-width:90px;min-height:40px;padding:6px 10px" value="${pr.dur||exDur(V.f)}" onchange="pDur(this.value)"></div>`}</div>
+${noKey?`<div class="card w mu" style="margin:0 0 8px">Cevap anahtarı yok, net hesaplanamaz. <button class="btn s g" onclick="sheetKeyEdit()">Anahtarı ekle</button></div>`:''}
+${k.pages&&k.pages.length?`<label class="row" style="margin:0 0 6px;color:var(--tx);font-size:14px"><input type="checkbox" style="width:20px;min-height:0" ${V.hideKey?'checked':''} onchange="keyHide(this.checked)">Cevap anahtarı sayfalarını gizle</label>`:''}
+${grid}<div class="shf"><button class="btn" style="width:100%" onclick="sheetFinish()">Sınavı bitir</button></div>`}
+function sheetSetup(){const n=+($$('shn').value||0),kt=$$('shk').value||'';let sec=parseKeyText(kt);
+if(!sec.length&&!/\d/.test(kt)){const L=kt.toUpperCase().replace(/[^A-E]/g,'');if(L.length>=3)sec=[L.split('')]}
+if(!sec.length&&n>0)sec=[Array(Math.min(n,300)).fill('')];if(!sec.length){toast('Soru sayısını yaz.');return}
+const k={m:V.f.mtime,sec,pages:[],manual:true};S.exm.key[V.f.rel]=k;V.key=k;V.setup=false;save();keyApply();sheetRender()}
+function sheetPick(i,l){const pr=progOf();if(pr.done)return;pr.a[i]=pr.a[i]===l?'':l;save();const r=$$('qr'+i);if(r)[...r.children].forEach((b,j)=>{if(j>0)b.classList.toggle('on','ABCDE'[j-1]===pr.a[i])});
+const c=$$('shc'),tot=V.key.sec.reduce((a,x)=>a+x.length,0);if(c)c.textContent=pr.a.filter(Boolean).length+' / '+tot+' işaretlendi'}
+function sheetClear(){ask('Bu sınavdaki tüm işaretlemelerin silinecek.',()=>{progOf().a=[];save();sheetRender()},'Evet, temizle')}
+function pdfClose(){try{V.doc&&V.doc.destroy()}catch(e){}V.pages.forEach(pdfRelease);const ov=$$('pdfv');if(ov)ov.remove();V={doc:null,pages:[],gen:0,f:null,mode:'orta',t:0}}
+async function pdfOpen(rel){const f=S.exm.files.find(x=>x.rel===rel);if(!f||$$('pdfv'))return;
+const ov=document.createElement('div');ov.id='pdfv';
+ov.innerHTML=`<div class="pvbar"><button class="btn d" onclick="pdfClose()">‹ Liste</button><div class="pvt2"><b>${esc(f.name.replace(/\.pdf$/i,''))}</b><div class="mu" id="pdfp">&nbsp;</div></div><button class="btn s" onclick="sheetToggle()">Cevap kâğıdı</button></div><div class="seg pvseg" id="pdfm">${PM.map(([k,l])=>`<button data-m="${k}" class="${(S.exm.mode||'orta')===k?'on':''}" onclick="pdfMode('${k}')">${l}</button>`).join('')}</div><div id="pdfc" onscroll="clearTimeout(V.t);V.t=setTimeout(pdfTick,60)"><div id="pdfi"><div class="mu" style="padding:40px 0">PDF açılıyor…</div></div></div>`;
+document.body.appendChild(ov);V={doc:null,pages:[],gen:0,f,mode:S.exm.mode||'orta',t:0,key:null,hideKey:true};
+try{await loadPdfJs();const buf=await (await fetch(Capacitor.convertFileSrc(f.app))).arrayBuffer();V.doc=await pdfjsLib.getDocument({data:buf}).promise;
+const inner=$$('pdfi');inner.innerHTML='';
+for(let n=1;n<=V.doc.numPages;n++){const pg=await V.doc.getPage(n),vp=pg.getViewport({scale:1}),w=document.createElement('div'),c=document.createElement('canvas');w.className='pgw';w.appendChild(c);inner.appendChild(w);V.pages.push({n,pw:vp.width,ph:vp.height,w,canvas:c,done:false,busy:false,sc:1})}
+pdfLayout();pdfKeyInit()}catch(e){const i=$$('pdfi');if(i)i.innerHTML=`<div class="card mu" style="margin:20px">PDF açılamadı. ${esc((e&&e.message)||'')}</div>`}}
+function exStat(f){const p=(S.exm.prog||{})[f.rel];if(!p)return 'Aç';if(p.done&&p.res&&p.res.u!==undefined&&p.res.secs.length&&p.res.u<p.res.secs.reduce((a,x)=>a+x.n,0))return p.res.net+' net';const m=(p.a||[]).filter(Boolean).length;return m?m+' işaretli':'Aç'}
+function examv(){const E=S.exm,L=exSort(E.files),gn=['TYT','AYT','YDT','Diğer'];
+const grp=gn.map((g,i)=>{const it=L.filter(f=>exRank(f.name)===i);return it.length?`<h2>${g}</h2><div class="card" style="padding:6px 18px">${it.map((f,j)=>`<div class="row sp" data-r="${esc(f.rel||f.name)}" onclick="pdfOpen(this.dataset.r)" style="padding:14px 0;cursor:pointer;${j?'border-top:1px solid var(--bd)':''}"><div style="min-width:0"><b style="word-break:break-word">${esc(f.name.replace(/\.pdf$/i,''))}</b><div class="mu">${(f.rel||'').includes('/')?esc(f.rel.replace(/\/[^\/]*$/,''))+' · ':''}${((f.size||0)/1048576).toFixed(1)} MB</div></div><span class="chip" style="margin:0">${exStat(f)}</span></div>`).join('')}</div>`:''}).join('');
+return `<button class="btn d" style="padding-left:0" onclick="go('home')">‹ Ana sayfa</button><h1>Sınav</h1><p class="mu">Telefonundaki <b>${FOLDER}</b> klasörüne koyduğun deneme ve test PDF'lerini burada çözeceksin.</p>
+<div class="card"><div class="row sp"><div style="min-width:0"><b>Klasör</b><div class="mu" style="word-break:break-all">${E.folder?esc(E.folder.replace(/^\/storage\/emulated\/\d+\//,'')):'Henüz bağlanmadı'}</div></div><span class="chip" style="margin:0">${E.folder?'Bağlı':'Bağlı değil'}</span></div>
+${exMsg?`<p class="mu" style="margin-top:12px">${esc(exMsg)}</p>`:''}
+<div class="row" style="margin-top:12px;gap:10px"><button class="btn g s" ${isNat()&&SAok===true&&!_exBusy?'':'disabled'} onclick="exSync(true)">Klasörü tara</button>${E.last?`<span class="mu">Son tarama: ${new Date(E.last).toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'})}</span>`:''}</div>
+<p class="mu" style="margin-top:12px">Sıralama: önce TYT, sonra AYT, diğerleri; her grupta isme göre.</p></div>
+<div class="card"><div class="row sp"><div><b>Dosya erişimi</b><div class="mu">${!isNat()?'Yalnızca yüklü uygulamada kullanılır':SAok===true?'İzin verildi':SAok===false?'İzin gerekli':'Kontrol ediliyor…'}</div></div><span class="chip" style="margin:0">${SAok===true?'Verildi':isNat()?'Gerekli':'—'}</span></div>
+${isNat()&&SAok!==true?`<p class="mu" style="margin-top:12px">Açılan ayar sayfasında <b>Sınav Takip</b> için "Tüm dosyalara erişime izin ver" anahtarını aç, sonra uygulamaya dön.</p><button class="btn" style="width:100%" onclick="saAsk()">İzin ver</button>`:''}</div>
+${L.length?grp:'<div class="card mu">Henüz sınav yok. Klasör bağlanınca PDF dosyaların burada görünecek.</div>'}`}
+function sayacv(){const T=S.timer,st=tStats(),sb=['Genel',...subs().map(a=>a[0])];
+const mini=(a,b)=>`<div class="card" style="margin:0;text-align:center;padding:12px 6px"><div style="font-size:17px;font-weight:700">${a}</div><div class="mu">${b}</div></div>`;
+const mx=Math.max(1,...Object.values(st.by)),rows=Object.entries(st.by).sort((a,b)=>b[1]-a[1]),recent=S.tlog.slice(-8).reverse();
+return `<p class="mu">Ne kadar çalıştığını sayaçla tut; uygulamayı kapatsan da süre işlemeye devam eder.</p>
+<div class="card hero" style="text-align:center"><select onchange="S.timer.subj=this.value;save()">${sb.map(n=>`<option${(T.subj||'Genel')===n?' selected':''}>${esc(n)}</option>`).join('')}</select><div class="big" id="tclk">${fmtT(tEl())}</div><div class="mu">${T.run?'Süre işliyor':T.acc>0?'Duraklatıldı':'Çalışmaya başlamak için başlat'}</div>
+<div class="row" style="justify-content:center;gap:10px;margin-top:16px">${T.run?`<button class="btn" onclick="tPause()">Duraklat</button>`:`<button class="btn" onclick="tStart()">${T.acc>0?'Devam et':'Başlat'}</button>`}${(T.run||T.acc>0)?`<button class="btn g" onclick="tFinish()">Bitir ve kaydet</button>`:''}</div></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">${mini(hm(st.td),'bugün')}${mini(hm(st.wk),'bu hafta')}${mini(hm(st.all),'toplam')}</div>
+${rows.length?`<h2>Bu hafta derslere göre</h2><div class="card">${rows.map(([n,v],i)=>`<div style="${i?'margin-top:14px':''}"><div class="row sp"><span>${esc(n)}</span><span class="mu">${hm(v)}</span></div><div class="bar" style="height:8px"><i style="width:${Math.round(v/mx*100)}%"></i></div></div>`).join('')}</div>`:''}
+${recent.length?`<h2>Son kayıtlar</h2><div class="card" style="padding:6px 18px">${recent.map((x,i)=>`<div class="row sp" style="padding:12px 0;${i?'border-top:1px solid var(--bd)':''}"><div><b>${esc(x.subj)}</b><div class="mu">${new Date(x.t).toLocaleDateString('tr-TR',{day:'numeric',month:'short'})} · ${hm(x.sec)}</div></div><button class="btn d" aria-label="Sil" onclick="tDel('${x.id}')">${ic('trash',18)}</button></div>`).join('')}</div>`:'<div class="card mu">Henüz kayıt yok. Sayacı başlatıp bitirdiğinde burada görünür.</div>'}`}
+addEventListener('visibilitychange',()=>{const e=$('#hdate');if(e&&document.visibilityState==='visible')e.textContent=dateStr();if((tab==='exam'||SAok===false)&&document.visibilityState==='visible')saRefresh()});
+setInterval(()=>{const e=$('#hdate');if(e)e.textContent=dateStr();const c=$('#tclk');if(c)c.textContent=fmtT(tEl());pdfTimerTick()},1000);
+const CHANGES=['Yeni açılış ekranı','Otomatik program: ders, saat ve ara süresine göre 5 farklı program seçeneği','Yeni Süre bölümü: çalışma sayacı ve soru hızı analizi','Ana sayfada tarih ve saat cihazdan okunuyor; Hedeflerim kartı açılıp kapanıyor','Koç artık uygulamayı tanıtıyor ve kullanım sorularını yanıtlıyor','Profil düzenlendi; geliştirilmiş geri bildirim formu ve Sık sorulan sorular eklendi','Verilerin korunur: bu güncelleme hiçbir kaydını silmez'];
+function showNews(force){if(!S.user)return;if(!force&&S.seenVer===VER)return;S.seenVer=VER;save();modal(`<h1>Yeni sürüm ${VER}</h1><p class="mu" style="margin:6px 0 12px">Neler değişti?</p>${ul(CHANGES)}<button class="btn" style="width:100%;margin-top:18px" onclick="closeM();askStorage()">Başla</button>`);return true}
+function afterSplash(){if(!showNews(false))askStorage()}
 render();
+(function(){const T=['Koç uyandırılıyor','Veriler analiz ediliyor','Çalışmaya başlanıyor'],el=document.getElementById('spt');let i=0;
+function ty(){const s=T[i];let k=0;el.textContent='';const iv=setInterval(()=>{el.textContent=s.slice(0,++k);if(k>=s.length)clearInterval(iv)},Math.max(20,Math.min(45,700/s.length)))}
+ty();const tm=setInterval(()=>{i++;if(i<3)ty();else clearInterval(tm)},1000);
+setTimeout(()=>{const sp=document.getElementById('splash');if(!sp)return;sp.classList.add('out');setTimeout(()=>{sp.remove();afterSplash()},450)},3000)})();
 </script></body></html>
